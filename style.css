@@ -1,0 +1,65 @@
+body {
+    margin: 0;background: linear-gradient(to right, #1A2980, #26D0CE);
+
+}
+
+h1 {
+    font-size: 2.8em;
+    background: rgba(0, 0, 0, 0.7); 
+    color: white;
+    padding: 20px 0px;
+    margin: 0;
+    text-align: center;
+}
+
+#centro {
+    margin-top: 200px;
+    display: flex;
+    justify-content: center;
+}
+
+#centro2 {
+    margin-top:50px;
+    display: flex;
+    justify-content: center;
+}
+
+button {
+    padding: 30px;
+    font-size: 1.9em;
+    background-color: skyblue;
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.39);
+    border: 0;
+    border-radius: 8px;
+}
+
+button:hover {
+    box-shadow: 3px 3px 10px rgb(90, 175, 209);
+}
+
+.image {
+    margin: auto;
+    width: 100px;
+    aspect-ratio: 1;
+}
+
+/* #resposta {
+
+
+} */
+
+.personalizar {
+    font-size: 1.7em;
+    background: rgba(0, 0, 0, 0.5);
+    padding: 20px;
+    text-align: center;
+    font-size: 1.5em;
+    color: #fff; /* Cor do texto */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+
+    border-radius: 7px;
+}
+
+#resposta:has(#image) {
+    background-color: #1A2980;
+}
