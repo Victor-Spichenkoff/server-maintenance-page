@@ -5,8 +5,9 @@ const btn = document.getElementById('btn')
 const listados = document.querySelectorAll('listados')
 
 
-const url = 'http://localhost:2006'
-// const url = 'https://server-maintenance.onrender.com'
+// const url = 'http://localhost:2006'
+// const url = 'https://server-maintenance.onrender.com'//old
+const url = 'https://server-maintenance-ssu7.onrender.com'
 
 const loadGif = 'https://cdn.pixabay.com/animation/2023/10/08/03/19/03-19-26-213_512.gif'
 
