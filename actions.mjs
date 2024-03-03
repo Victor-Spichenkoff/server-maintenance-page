@@ -19,7 +19,7 @@ const status = document.getElementById('manter-individual')
 getStatusAfeterFetch()
 
 
-var tentativas = 0
+
 async function carregarStatus() {
     try{
         status.innerHTML = 'Buscando...'
@@ -80,8 +80,17 @@ async function setarUma(nome) {
     getStatusAfeterFetch()
 }
 
+
+var tentativas = 0
 async function getStatusAfeterFetch() {
     const res = await carregarStatus()
+    tentativas++
+
+    if(tentativas > 5) {//não deu
+        tentativas = 0
+        status.innerText = 'Cancelada'
+        return
+    }
 
     if(res) return
     setTimeout(getStatusAfeterFetch, 2000)
@@ -118,17 +127,24 @@ desligar.onclick = () => {
 
 //varias mensagens area
 const vmRes = document.getElementById('varias-menagens-res')//variasMsgResposta
-
+var vmTentativas = 0
 
 async function getStatusSeveralMenssages() {
-    vmRes.innerHTML = 'Buscando'
+    vmRes.innerHTML = 'Buscando...'
+
     const interval = setInterval(async ()=>{
+        tentativas++
+        if(tentativas  > 5) {
+            vmTentativas = 0
+            vmRes.innerHTML = 'Cancelado'
+            clearInterval(interval)
+        }
         try{
             const res = await axios(url+'/hightMenssagesStatus')
             if(res) clearInterval(interval)
             vmRes.innerHTML = res.data
         } catch(e) {
-            getStatusSeveralMenssages()
+            vmRes = 'Erro na busca'
         }
     }, 1000)
     
