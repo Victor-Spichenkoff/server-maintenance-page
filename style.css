@@ -12,11 +12,16 @@ h1 {
     text-align: center;
 }
 
-#centro {
+#centro, .meio {
     margin-top: 200px;
     display: flex;
     justify-content: center;
 }
+
+.meio {
+    margin-top: 30px;
+}
+
 
 #centro2 {
     margin-top:50px;
@@ -24,7 +29,17 @@ h1 {
     justify-content: center;
 }
 
+
 button {
+    padding: 10px;
+    font-size: 1.5em;
+    background-color: skyblue;
+    border-radius: 8px;
+    border: none;
+
+}
+
+#btn, #btn2 {
     padding: 30px;
     font-size: 1.9em;
     background-color: skyblue;
@@ -33,8 +48,10 @@ button {
     border-radius: 8px;
 }
 
+
+
 button:hover {
-    box-shadow: 3px 3px 10px rgb(90, 175, 209);
+    box-shadow: 3px 3px 10px rgb(90, 175, 209) !important;
 }
 
 .image {
@@ -107,8 +124,20 @@ button:hover {
     margin: 10px 0;
     text-align: center;
 }
+#lista > button {
+    display: block;
+    background-color: skyblue;
+    padding: 15px;
+    font-size: 1.5em;
+    list-style: none;
+    border-radius: 10px;
+    margin: 10px 0;
+    text-align: center;
+    margin: 10px auto;
+    width: 190px;
+}
 
-#manter-individual {
+#manter-individual, #varias-menagens-res {
     margin-top: 20px;
     text-align: center;
     padding: 10px;
@@ -124,4 +153,16 @@ button:hover {
     text-align: center;
     width: fit-content;
     border-radius: 10px;
+}
+
+
+#individual.varias-mensagens {
+    margin-top: 40px;
+    width: fit-content;
+    padding: 20px 40px;
+}
+
+h2 {
+    font-size: 2.2em;
+    text-align: center;
 }
