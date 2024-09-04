@@ -1,0 +1,1 @@
+export const baseUrl = process.env.NODE_ENV == "development" ? "http://localhost:2009" : "https://server-maintenance-ssu7.onrender.com"

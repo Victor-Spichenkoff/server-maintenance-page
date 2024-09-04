@@ -1,28 +1,36 @@
-<h1>Maintenance of my servers (portuguese version below)</h1>
-<hr>
+This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-<a href="https://victor-spichenkoff.github.io/server-maintenance-page/">Visit here</a> a page to make all requests manually
+## Getting Started
 
-<br>
+First, run the development server:
 
-<p>This API makes requests for all my other APIs, preventing them from be deactivated</p>
+```bash
+npm run dev
+# or
+yarn dev
+# or
+pnpm dev
+# or
+bun dev
+```
 
-<p>Every 15 minutes a request is made for all others.</p>
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-<p>There is also a <strong>Bot on Telegram</strong> that automatically sends me a report once a day</p>
+You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-I also built a website, allowing me to control all the APIs to be loaded, necessary as the hosting has a limit of 750 hours
+This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
 
+## Learn More
 
-<br><br>
+To learn more about Next.js, take a look at the following resources:
 
-<h1>Manutenção dos meus servidores</h1>
-<hr>
+- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-<p>Essa API realiza requisições para todas as minhas demais, evitando que elas caim na inatividade</p>
+You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
 
-<p>A cada 2 horas é realizada uma requisição para todas as outras.</p>
+## Deploy on Vercel
 
-<p>Há, também, um <strong>Bot no Telegram</strong> que me envia automaticamente um relatório 1 vez por dia</p>
+The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
-Contrui também um site, permitindo que eu controle todas as APIs a serem carregadas, necessário pois a hospedagem possui um limite de 750 horas
+Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
