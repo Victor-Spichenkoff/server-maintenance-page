@@ -1,12 +1,18 @@
+import { useState } from "react"
+import { SelectApi } from "../functions/SelectApi"
 import { ToggleItem } from "../functions/ToggleItem"
-import { ActionButton } from "./ActionButton"
 
-export const SettingsToggleArea = () => {
+interface ISettingsArea {
+    setForceUpdate: any
+}
+
+
+export const SettingsToggleArea = ({ setForceUpdate }: ISettingsArea) => {
     return (
-        <div className="self-start mt-12">
-            <ActionButton label="Selecionar"/>
+        <div className="self-start mt-12 flex items-center justify-between w-full">
+            <SelectApi setForceUpdate={setForceUpdate}/>
 
-            <ToggleItem value={true} setValue={()=>{}} />
+            <ToggleItem isChecked={true} onCheckChange={()=>{}} label="Keep API ON"/>
         </div>
     )
 }

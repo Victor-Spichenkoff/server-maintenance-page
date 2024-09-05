@@ -21,8 +21,10 @@ const config: Config = {
   		colors: {
 			"main": "#111C2E",
 			"highlight": "#0764D0",
+			"gray-blue": "#465F87",
 			sucess: "#0DB914",
 			error: "#D10303",
+			gold: "#CFA34B",
   			background: 'hsl(var(--background))',
   			foreground: 'hsl(var(--foreground))',
   			card: {

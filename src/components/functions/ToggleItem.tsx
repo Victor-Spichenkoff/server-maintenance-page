@@ -1,24 +1,29 @@
+import { useEffect, useState } from "react"
 import { Switch } from "../ui/switch"
 
 interface IToggleItem {
-    value: boolean
-    setValue: (v: boolean) => void
+    isChecked?: boolean
+    label: string
+    onCheckChange: () => any
 }
 
 
-export const ToggleItem = ({value, setValue}: IToggleItem) => {
-    const toggleValue = () => {
-        setValue(!value)
+export const ToggleItem = ({ isChecked, label, onCheckChange }: IToggleItem) => {
+
+    const handleCheckChange = () => {
+        // setValue(!value)
+        onCheckChange()
+        // setCurrentValue(!currentValue)
     }
 
 
     return (
-        <div>
-            <Switch 
-                checked={value}
-                onCheckedChange={toggleValue}
-                />
-            
+        <div className="flex items-center">
+            <Switch
+                checked={isChecked || false}
+                onCheckedChange={handleCheckChange}
+            />
+            <span className="ml-2">{label}</span>
         </div>
     )
 }

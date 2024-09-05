@@ -1,6 +1,6 @@
 import { baseUrl } from "@/global"
 import axios from "axios"
-import { useCallback, useEffect, useState } from "react"
+import { useCallback, useEffect, useState, useTransition } from "react"
 
 interface IStatus {
     update: any
@@ -8,23 +8,33 @@ interface IStatus {
 
 
 export const Status = ({ update }: IStatus) => {
-    const [status, setStatus] = useState("Carregando...")
-    
-    useEffect(()=> {
-        setStatus("Carregando...")
+    const [status, setStatus] = useState("")
+    const [ isLoading, startTrantiotion ] = useTransition()
 
-        axios(`${baseUrl}/currenton`)
-            .then(res => {
+    useEffect(()=> {
+        startTrantiotion(async ()=> {
+            try{
+                const res = await axios(`${baseUrl}/currenton`)
                 setStatus(res.data)
-            })
-            .catch(()=> setStatus("erro ao pegar staus"))
+            } catch {
+                setStatus("Erro ao pegar staus")
+            }
+        })
     }, [update])
 
 
+    const changeOnApi = () => {
+        
+    }
+
 
     return (
-        <div className="bg-[#CFA34B] min-w-[280px] text-center text-gray-900 px-4 py-2 rounded-xl text-2xl">
-            {status}
+        <div 
+            className={` text-slate-100 border border-gold min-w-[280px] text-center px-4 py-2 rounded-xl text-2xl
+            ${status != "Nenhum Selecionado" && "bg-gold text-gray-900"}
+        `}>
+            {!isLoading && status}
+            {isLoading && "Carregando..."}
         </div>
     )
 }

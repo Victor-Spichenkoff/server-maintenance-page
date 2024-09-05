@@ -1,3 +1,5 @@
+"use client"
+
 import { Footer } from "@/components/template/Footer";
 import { Header } from "@/components/template/Header";
 import { SettingsArea } from "@/components/template/SettingsArea";
