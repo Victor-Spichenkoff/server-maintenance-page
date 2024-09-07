@@ -1,30 +1,44 @@
 import { useCallback, useState, useTransition } from "react"
 import { ActionButton } from "../template/ActionButton"
 import { requestEndPointWithTimeout } from "@/utils/requets"
+import axios from "axios"
 
 export const QuickSettings = () => {
-    const [status, setStatus] = useState()
+    const [successStatus, setSuccessStatus] = useState("")
     const [showStatus, setShowStatus] = useState(false)
     const [isLoading, startTransition] = useTransition()
+    const [errorStatus, setErrorStatus] = useState("")
 
-    useCallback(() => {
-        setTimeout(() => setShowStatus(false), 5000)
-    }, [status])
+    const resetValues = () => {
+        setShowStatus(false)
+        setErrorStatus("")
+        setSuccessStatus("")
+    }
+
+    useCallback(() => setTimeout(() => resetValues(), 5000), [successStatus, errorStatus])
 
     const callApiOnce = () => {
-        startTransition( async () => {
+        startTransition(async () => {
+            resetValues()
             //para testes
-            const res: any = await requestEndPointWithTimeout('/timeout', 2)
-            // const res: any = await requestEndPointWithTimeout('/isOn')
+            // const res: any = await requestEndPointWithTimeout('/timeout', 2)
+            const res: any = await requestEndPointWithTimeout('/isOn', 10)
 
             if (typeof res.error == "string")
-                return setStatus(res.error)
+                setErrorStatus(res.error)
 
-            if (res.error)
-                return console.log("Erro ao chamar a api 1 vez")
+            if (res.error) {
+                setErrorStatus("Erro inesperado!")
+                console.log("Erro ao chamar a api 1 vez")
+            }
 
-            setStatus(res.data)
+            setShowStatus(true)
+            setSuccessStatus(res.data)
         })
+    }
+
+    const allOnce = async () => {
+        const res = await axios("/")
     }
 
 
@@ -34,15 +48,18 @@ export const QuickSettings = () => {
             <ActionButton label="Chamar Todos" />
             <ActionButton label="Forçar Todos" />
         </div>
-        {showStatus ? (
-            <div className="flex flex-[2] justify-center items-center
-                border border-gray-blue ml-8 
-                rounded-md">
-                NO DATA
+        {showStatus && !isLoading ? (
+            <div className={`flex flex-[2] justify-center items-center
+                border ml-8
+                ${ successStatus && 'border-sucess text-sucess'}  
+                ${errorStatus && 'border-error text-error'}
+                rounded-md`}>
+                { successStatus }
+                {errorStatus}
             </div>
 
         ) : (
-            <div className="flex flex-[2]"></div>
+            !isLoading && (<div className="flex flex-[2]"></div>)
         )}
 
         {isLoading && (

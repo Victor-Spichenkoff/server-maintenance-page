@@ -18,7 +18,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={cn(inter.className, 
-        "bg-main text-gray-200 max-w-[416px] md:border border-orange-300 min-h-screen mx-auto relative")}>
+        "bg-main text-gray-200  min-h-screen mx-auto relative")}>
           {children}
         </body>
     </html>

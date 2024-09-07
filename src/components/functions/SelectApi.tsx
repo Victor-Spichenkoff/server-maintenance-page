@@ -91,7 +91,6 @@ export const SelectApi = ({ setForceUpdate }: ISelectApi) => {
         </DropdownMenuContent>
 
       </DropdownMenu>
-
     </div>
   )
 }
