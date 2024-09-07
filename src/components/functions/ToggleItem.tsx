@@ -11,9 +11,7 @@ interface IToggleItem {
 export const ToggleItem = ({ isChecked, label, onCheckChange }: IToggleItem) => {
 
     const handleCheckChange = () => {
-        // setValue(!value)
         onCheckChange()
-        // setCurrentValue(!currentValue)
     }
 
 

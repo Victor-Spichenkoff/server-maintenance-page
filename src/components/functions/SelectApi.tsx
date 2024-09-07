@@ -81,7 +81,7 @@ export const SelectApi = ({ setForceUpdate }: ISelectApi) => {
 
   return (
     <div className="relative w-full">
-      <DropdownMenu modal={false} defaultOpen>
+      <DropdownMenu modal={false}>
         <DropdownMenuTrigger>
           <ActionButton label="Selecionar"/>
         </DropdownMenuTrigger>
