@@ -21,10 +21,14 @@ const config: Config = {
   		colors: {
 			"main": "#111C2E",
 			"highlight": "#0764D0",
-			"gray-blue": "#465F87",
+			// "gray-blue": "#465F87",//original
 			sucess: "#0DB914",
-			error: "#D10303",
+			error: "#FF4444",
 			gold: "#CFA34B",
+			// error: "#D10303",//original
+			"hight-border": "#2E4B75",
+			"gray-blue": "#1A2740",
+		  
   			background: 'hsl(var(--background))',
   			foreground: 'hsl(var(--foreground))',
   			card: {

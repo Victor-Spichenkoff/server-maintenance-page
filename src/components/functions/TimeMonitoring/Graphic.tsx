@@ -11,7 +11,8 @@ interface ICircleGraphic {
 
 
 //usage, total
-const colors = ["#D10303", "#004"]
+const colors = ["#0764D0", "#465F87"]
+const insideTextColor = "#D4DCE5"
 
 /**
  * 
@@ -57,7 +58,7 @@ export const CircleGraphic = ({ className, remaningMinutes, remaningHours, title
           innerRadius={0.5}
           padAngle={0.7}
           cornerRadius={3}
-          arcLabelsTextColor={"#DDD"}
+          arcLabelsTextColor={insideTextColor}
 
           activeOuterRadiusOffset={8}
           borderWidth={2}

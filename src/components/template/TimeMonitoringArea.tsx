@@ -8,15 +8,18 @@ import { RotateCw } from 'lucide-react'
 export const TimeMonitoringArea = () => {
     const [times, setTimes] = useState<IRemaningResponse | null>(null)
     const [isLoading, startTransition] = useTransition()
+    const [isError, setIsError] = useState(false)
 
     const getInfos = async () => {
         startTransition(async () => {
             try {
                 const res = await axios(`${baseUrl}/usage/both`)
                 setTimes(res.data)
+                setIsError(false)
 
             } catch {
                 setTimes(null)
+                setIsError(true)
             }
         })
 
@@ -36,7 +39,10 @@ export const TimeMonitoringArea = () => {
                     onClick={getInfos}
                     className="absolute right-8"
                     >
-                    <RotateCw className={`${isLoading && "animate-spin"} `}/>
+                    <RotateCw className={`
+                        ${isLoading && "animate-spin"} 
+                        hover:animate-spin
+                        `}/>
                 </div>
             </div>
             {times && (
@@ -56,8 +62,11 @@ export const TimeMonitoringArea = () => {
                 </div>
             )}
 
-            {!times && (
-                <div>SEM DADOS</div>
+            {!times && !isError && (
+                <div className="mt-24 text-highlight">SEM DADOS</div>
+            )}
+            {!times && isError && (
+                <div className="mt-24 text-error">ERRO ao pegar os Dados</div>
             )}
         </div>
     )

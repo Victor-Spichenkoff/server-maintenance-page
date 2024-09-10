@@ -86,7 +86,7 @@ export const SelectApi = ({ setForceUpdate }: ISelectApi) => {
           <ActionButton label="Selecionar"/>
         </DropdownMenuTrigger>
 
-        <DropdownMenuContent className="border-none bg-gray-blue w-[300px] px-4  -mr-[200px] text-gray-200 text-xl" sideOffset={17}>
+        <DropdownMenuContent className=" bg-gray-blue w-[300px] px-4  -mr-[200px] text-gray-200 text-xl border-none border-hight-border shadow-lg" sideOffset={17}>
           {elemets}
         </DropdownMenuContent>
 

@@ -13,7 +13,7 @@ export const QuickSettings = () => {
     const [isLoading, startTransition] = useTransition()
     const [errorStatus, setErrorStatus] = useState("")
     // const []
-
+    
     const resetValues = () => {
         setShowStatus(false)
         setErrorStatus("")
