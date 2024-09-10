@@ -48,10 +48,6 @@ export const SettingsToggleArea = ({ setForceUpdate }: ISettingsArea) => {
                 <QuickSettings />
 
             </div>
-
         </div>
-
-
-        <TimeMonitoringArea />
     </>)
 }
