@@ -1,10 +1,14 @@
-import { useEffect, useState } from "react"
+import { useEffect, useState, useTransition } from "react"
 import { SelectApi } from "../functions/SelectApi"
 import { ToggleItem } from "../functions/ToggleItem"
 import { QuickSettings } from "../functions/QuickSettings"
 import axios from "axios"
 import { baseUrl } from "@/global"
 import { TimeMonitoringArea } from "./TimeMonitoringArea"
+import { Loading } from "../functions/Loading"
+import { useToast } from "@/hooks/use-toast"
+import { Toaster } from "../ui/toaster"
+import { ShowMessage } from "../functions/ShowMessage"
 
 interface ISettingsArea {
     setForceUpdate: any
@@ -13,19 +17,26 @@ interface ISettingsArea {
 
 export const SettingsToggleArea = ({ setForceUpdate }: ISettingsArea) => {
     const [isApiOn, setIsApiOn] = useState(false)
+    const [isLoading, startTransition] = useTransition()
+
+    const { toast } = useToast()
 
     const handleApiStateChange = () => {
         const newStatus = !isApiOn
 
         const endpoint = newStatus ? "/keepApiOn" : '/turnOffThis'
-        axios(`${baseUrl}${endpoint}`)
-            .then(res => {
-                console.log(res.data)
+        startTransition(async () => {
+            try {
+                const res = await axios(`${baseUrl}${endpoint}`)
                 if(res.data == "Iniciado")
                     setIsApiOn(true)
                 else
                     setIsApiOn(false)
-            })
+            } catch {
+                ShowMessage("Erro ao mudar API", 'error', toast)
+            }
+
+        })
     }
 
     useEffect(() => {
@@ -36,7 +47,11 @@ export const SettingsToggleArea = ({ setForceUpdate }: ISettingsArea) => {
 
 
     return (<>
+    <Loading isLoading={isLoading} />
+    <Toaster /> 
         <div className="self-start mt-12 flex items-center justify-between w-full">
+            
+
             <SelectApi setForceUpdate={setForceUpdate} />
 
             <ToggleItem isChecked={isApiOn} onCheckChange={handleApiStateChange} label="Keep API ON" />

@@ -16,7 +16,7 @@ export const ToggleItem = ({ isChecked, label, onCheckChange }: IToggleItem) => 
 
 
     return (
-        <div className="flex items-center">
+        <div className="flex items-center w-fit">
             <Switch
                 checked={isChecked || false}
                 onCheckedChange={handleCheckChange}
