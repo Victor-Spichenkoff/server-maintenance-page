@@ -3,7 +3,7 @@ import { Topic } from "@/components/manual/Topic"
 import { ActionButton } from "@/components/template/ActionButton"
 import Link from "next/link"
 
-export default () => {
+export default function Manual () {
     return (
         <div className="w-screen max-w-[700px] p-6 mx-auto">
             <Link href="/"><ActionButton label="Voltar" /></Link>
