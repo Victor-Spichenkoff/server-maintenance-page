@@ -11,6 +11,12 @@ export const ShowMessage = (
         case 'error':
             variant = "destructive"
             break
+        case 'success':
+            variant = "success"
+            break
+        case 'info':
+            variant = "info"
+            break
         // case 'success':
         //     variant = "success"
         //     break
@@ -22,5 +28,6 @@ export const ShowMessage = (
     toast({
         title: message,
         variant: variant,
+        duration: 4000
       })
 }

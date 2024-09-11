@@ -80,6 +80,21 @@
   }
 }
 
+::-webkit-scrollbar {
+  width: 4px; /* Largura da barra de rolagem */
+}
+
+::-webkit-scrollbar-track {
+  background: rgb(29, 78, 226) !important;
+}
+
+/* barra mesmo */
+::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.836);
+  border-radius: 20px 0 0 20px ;
+}
+
+
 @layer base {
   * {
     @apply border-border;

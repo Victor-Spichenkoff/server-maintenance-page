@@ -32,6 +32,8 @@ export const SettingsToggleArea = ({ setForceUpdate }: ISettingsArea) => {
                     setIsApiOn(true)
                 else
                     setIsApiOn(false)
+
+                ShowMessage("Mudado com Sucesso", 'success', toast)
             } catch {
                 ShowMessage("Erro ao mudar API", 'error', toast)
             }
