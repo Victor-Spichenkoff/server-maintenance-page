@@ -17,12 +17,6 @@ export const ShowMessage = (
         case 'info':
             variant = "info"
             break
-        // case 'success':
-        //     variant = "success"
-        //     break
-        // case 'error':
-        //     variant = "primary"
-        //     break
     }
 
     toast({

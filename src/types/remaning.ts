@@ -6,4 +6,6 @@ export interface IRemaning {
 export interface IRemaningResponse {
     main: IRemaning
     this: IRemaning
+    lastStart?: string,
+    lastDiscount?: string
 }

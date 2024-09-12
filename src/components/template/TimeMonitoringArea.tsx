@@ -4,6 +4,7 @@ import { IRemaningResponse } from "@/types/remaning"
 import axios from "axios"
 import { useEffect, useState, useTransition } from "react"
 import { RotateCw } from 'lucide-react'
+import { Loading } from "../functions/Loading"
 
 export const TimeMonitoringArea = () => {
     const [times, setTimes] = useState<IRemaningResponse | null>(null)
@@ -27,25 +28,47 @@ export const TimeMonitoringArea = () => {
 
 
     useEffect(() => {
-        getInfos()
+        axios(`${baseUrl}/usage/both`)
+            .then(res => {
+                setTimes(res.data)
+                setIsError(false)
+            })
+            .catch(() => {
+                setTimes(null)
+                setIsError(true)
+            })
     }, [])
 
 
     return (
         <div className="mt-24 mb-40 w-full text-center">
+            <Loading isLoading={isLoading} />
             <div className="flex justify-center relative">
-            <h2 className="text-2xl text-center">Tempos</h2>
+                <h2 className="text-2xl text-center">Tempos</h2>
                 <div
                     onClick={getInfos}
                     className="absolute right-8"
-                    >
+                >
                     <RotateCw className={`
                         ${isLoading && "animate-spin"} 
                         hover:animate-spin
-                        `}/>
+                        `} />
                 </div>
             </div>
-            {times && (
+            {times && (<>
+                <div className="mt-5 p-4 rounded-lg bg-gray-800 text-white shadow-md">
+                    <div className="flex items-center gap-2">
+                        <span className="text-green-400">🕒</span>
+                        <span className="font-semibold">Start:</span>
+                        <span>{times.lastStart ?? "Não iniciado"}</span>
+                    </div>
+                    <div className="flex items-center gap-2 mt-3">
+                        <span className="text-red-400">🔻</span>
+                        <span className="font-semibold">Last Discount:</span>
+                        <span>{times.lastDiscount ?? "Não feito"}</span>
+                    </div>
+                </div>
+
                 <div className="mt-8 flex flex-col flex-wrap w-full">
                     <CircleGraphic className="border-r border-gray-500"
                         remaningHours={times.main.hours}
@@ -60,7 +83,9 @@ export const TimeMonitoringArea = () => {
                     {/* <CircleGraphic className="border-l border-gray-500" /> */}
 
                 </div>
-            )}
+
+
+            </>)}
 
             {!times && !isError && (
                 <div className="mt-24 text-highlight">SEM DADOS</div>

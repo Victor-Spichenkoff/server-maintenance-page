@@ -4,6 +4,8 @@ import { requestEndPointWithTimeout } from "@/utils/requets"
 import axios, { AxiosError, isAxiosError } from "axios"
 import { baseUrl } from "@/global"
 import { ForceAll } from "./ForceAll"
+import { ToggleItem } from "./ToggleItem"
+import { HighMessages } from "./HighMessages"
 
 
 var currentTimeout: NodeJS.Timeout
@@ -13,7 +15,7 @@ export const QuickSettings = () => {
     const [isLoading, startTransition] = useTransition()
     const [errorStatus, setErrorStatus] = useState("")
     // const []
-    
+
     const resetValues = () => {
         setShowStatus(false)
         setErrorStatus("")
@@ -77,41 +79,46 @@ export const QuickSettings = () => {
     //ERROR QUNADO TODAS ESTÂO FUNCIONANOD, FORCEaLL == TRUE, O FORCE ONCE RETORNA UM ERRO
     //DICAS> QUANDO TUDO CERTO, A API RETORNA 10004 no número das que estão funcoiando (worknig)
 
-    return (<>
-        <div className="w-full flex flex-col items gap-y-2 flex-[1]">
-            <ActionButton label="Chamar API" onClick={callApiOnce} />
-            <ActionButton label="Chamar Todos" onClick={allOnce} />
-            <ForceAll 
-                setSuccessStatus={setSuccessStatus} 
-                setErrorStatus={setErrorStatus}
-                setShowStatus={setShowStatus}
-                startTransition={startTransition}
-            />
-        </div>
-        {showStatus && !isLoading ? (
-            <div className={`flex flex-[2] justify-center items-center
+    return (<div className="flex flex-col">
+        <HighMessages />
+        <div>
+
+            <div className="w-full flex flex-col items gap-y-2 flex-[1]">
+                <ActionButton label="Chamar API" onClick={callApiOnce} />
+                <ActionButton label="Chamar Todos" onClick={allOnce} />
+                <ForceAll
+                    setSuccessStatus={setSuccessStatus}
+                    setErrorStatus={setErrorStatus}
+                    setShowStatus={setShowStatus}
+                    startTransition={startTransition}
+                />
+            </div>
+            {showStatus && !isLoading ? (
+                <div className={`flex flex-[2] justify-center items-center
                 border ml-8
                 ${successStatus && 'border-sucess text-sucess p-2'}  
                 ${errorStatus && 'border-error text-error p-2'}
                 rounded-md`}>
 
-                <div style={{ whiteSpace: 'pre-line' }}>
-                    {errorStatus}
+                    <div style={{ whiteSpace: 'pre-line' }}>
+                        {errorStatus}
+                    </div>
+                    <div style={{ whiteSpace: 'pre-line' }}>
+                        {successStatus}
+                    </div>
                 </div>
-                <div style={{ whiteSpace: 'pre-line' }}>
-                    {successStatus}
-                </div>
-            </div>
 
-        ) : (
-            !isLoading && (<div className="flex flex-[2]"></div>)
-        )}
+            ) : (
+                !isLoading && (<div className="flex flex-[2]"></div>)
+            )}
 
-        {isLoading && (
-            <div className="flex flex-[2] justify-center items-center
+            {isLoading && (
+                <div className="flex flex-[2] justify-center items-center
                 border border-gray-blue ml-8 
                 rounded-md">
-                Carregando...
-            </div>)}
-    </>)
+                    Carregando...
+                </div>)}
+        </div>
+
+    </div>)
 }

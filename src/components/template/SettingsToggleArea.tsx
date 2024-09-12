@@ -63,7 +63,6 @@ export const SettingsToggleArea = ({ setForceUpdate }: ISettingsArea) => {
             <h2 className="text-2xl text-center">Ações</h2>
             <div className="w-full flex mt-5">
                 <QuickSettings />
-
             </div>
         </div>
     </>)

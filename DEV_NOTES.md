@@ -5,3 +5,8 @@
 - #CFA34B - ouro
 - #D6B97E - ouro fraco
 - 0764D0 - Cor BTNs
+
+
+
+# Todo - Front
+- Imlementar o HightMessages BTN
