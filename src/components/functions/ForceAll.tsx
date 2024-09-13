@@ -10,15 +10,21 @@ interface ForceAll {
     startTransition: TransitionStartFunction
 }
 
+//erro: NMão reinicia apos mandar cancelar
+//mudei o tmepo para 1s entre cada
+
 var currentTimeout: NodeJS.Timeout
 export const ForceAll = ({ setSuccessStatus, setErrorStatus, setShowStatus, startTransition }: ForceAll) => {
-    const [times, setTimes] = useState(0)
+    const [isCalling, setIsCalling] = useState(false)
+    const [stop, setStop] = useState(false)
 
     const recursiveRequest = async (times: number) => {
+        if(stop)
+            return
+
         setErrorStatus("")
         setSuccessStatus("")
         startTransition(async () => {
-            // setTimes(times => times + 1)
             times += 1
 
             if (times + 1 >= 10)
@@ -26,35 +32,52 @@ export const ForceAll = ({ setSuccessStatus, setErrorStatus, setShowStatus, star
 
             try {
                 const res = await axios(`${baseUrl}/callAllOnce/force`, { timeout: 50_000 })
-    
+
                 if (res.data.isAllWorking)
                     return setSuccessStatus(`Todas as ${res.data.working} funcionando!`)
-    
+
                 //deu errado
                 setErrorStatus(`Erro: 
-                tentativa: ${times + 1}/10
+                tentativa: ${times}/10
                 Espere 10 segundos...
                 `)
-            } catch(e: any) {
+            } catch (e: any) {
                 if (e.code === 'ECONNABORTED')
                     setErrorStatus("Demorou Muito")
-                else 
+                else
                     setErrorStatus("Erro no request!")
             }
 
 
-            currentTimeout = setTimeout(() => recursiveRequest(times), 10_000)
+            currentTimeout = setTimeout(() => recursiveRequest(times), 1_000)
         })
-        
+
     }
 
     const handleForceAllClick = () => {
         clearTimeout(currentTimeout)
         setShowStatus(true)
+        setStop(false)
+        setIsCalling(true)
         recursiveRequest(0)
     }
 
+
+    const handleCancell = () => {
+        setSuccessStatus("")
+        setIsCalling(false)
+        setStop(() => true)
+
+        clearTimeout(currentTimeout)
+
+        setErrorStatus(`CANCELADO`)
+    }
+
     return (
-        <ActionButton label="Forçar Todos" onClick={handleForceAllClick} />
+        <ActionButton
+            label={ isCalling ? "Cancelar" : "Forçar Todos" }
+            onClick={isCalling ? handleCancell : handleForceAllClick}
+            className={isCalling ? "bg-error hover:bg-[#960404]" : "" }
+        />
     )
 }

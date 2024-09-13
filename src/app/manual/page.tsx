@@ -18,7 +18,16 @@ export default function Manual () {
             <Topic>Chamar todos - Vai realizar um request para cada um deles, timeout de 30s</Topic>
             <Topic>Forçar Todos - Vai ficar fazendo requests até que todos retornem algo</Topic>
 
-            <ManualTitle text="Manual" level={25}/>
+            <ManualTitle text="Modificar Tempo" level={35}/>
+            {/* <Topic></Topic> */}
+            {/* <Topic></Topic> */}
+            <Topic>/setTime - enviar POST com os dados do novo tempo (h e m) + type (main, this)</Topic>
+
+
+            <ManualTitle text="Manual" level={35}/>
+            <ManualTitle text="Manual" level={35}/>
+            <ManualTitle text="Manual" level={35}/>
+            <ManualTitle text="Manual" level={35}/>
         </div>
     )
 }

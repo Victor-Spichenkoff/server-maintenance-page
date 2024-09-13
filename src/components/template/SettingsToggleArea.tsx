@@ -56,7 +56,12 @@ export const SettingsToggleArea = ({ setForceUpdate }: ISettingsArea) => {
 
             <SelectApi setForceUpdate={setForceUpdate} />
 
-            <ToggleItem isChecked={isApiOn} onCheckChange={handleApiStateChange} label="Keep API ON" />
+            <ToggleItem 
+            isChecked={isApiOn} 
+            onCheckChange={handleApiStateChange} 
+            label="Keep API ON" 
+            setForceUpdate={setForceUpdate}
+            />
 
         </div>
         <div className="mt-12 w-full">

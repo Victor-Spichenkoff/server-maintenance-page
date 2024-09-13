@@ -19,16 +19,22 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en">
-      <body className={cn(inter.className, 
+    <html lang="pt-br">
+      <head>
+        {/* <link rel="shortcut icon" href="./logo.png" type="image/x-icon" /> */}
+        <link rel="manifest" href="/manifest.json" />
+        <link rel="apple-touch-icon" href="/logo.png" />
+        <meta name="theme-color" content="#000000" />
+      </head>
+      <body className={cn(inter.className,
         "bg-main text-gray-200  min-h-screen mx-auto relative overflow-x-hidden")}>
         <NextUiProvider>
-        <ToastContainer />
+          <ToastContainer />
           {children}
         </NextUiProvider>
-        
-        
-        </body>
+
+
+      </body>
     </html>
   )
 }
