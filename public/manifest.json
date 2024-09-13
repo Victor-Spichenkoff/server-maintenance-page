@@ -1,6 +1,6 @@
 {
-    "name": "Nome do Seu Site",
-    "short_name": "Nome Curto",
+    "name": "Manutenção Servidores",
+    "short_name": "Manutenção",
     "start_url": "/",
     "display": "standalone",
     "background_color": "#ffffff",
