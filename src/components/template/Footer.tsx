@@ -23,7 +23,7 @@ export const Footer = () => (
       <div className="container mx-auto text-center">
         <div className="flex justify-center space-x-6">
           <Link href="/manual" className="hover:text-green-500 transition-colors">
-            Para o Manual 📗
+            Manual 📗
           </Link>
           <Link href="/v1" className="hover:text-green-500 transition-colors">
             V1

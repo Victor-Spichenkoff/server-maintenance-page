@@ -1,12 +1,13 @@
 "use client"
 
-import { Footer } from "@/components/template/Footer";
-import { Header } from "@/components/template/Header";
-import { SettingsArea } from "@/components/template/SettingsArea";
-import Image from "next/image";
+import { Footer } from "@/components/template/Footer"
+import { Header } from "@/components/template/Header"
+import { SettingsArea } from "@/components/template/SettingsArea"
 
 export default function Home() {
-  return (<div className="max-w-[416px] md:border border-black min-h-screen mx-auto relative">
+  const useBorder = process.env.NODE_ENV == "development" ? "md:border border-black" : ""
+
+  return (<div className={`max-w-[416px]  ${useBorder} min-h-screen mx-auto relative`}>
     <Header title="Server"/>
     <SettingsArea />
     <Footer />

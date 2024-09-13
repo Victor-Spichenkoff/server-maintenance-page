@@ -1,33 +1,46 @@
 import { ManualTitle } from "@/components/manual/ManualTitle"
 import { Topic } from "@/components/manual/Topic"
 import { ActionButton } from "@/components/template/ActionButton"
+import { Footer } from "@/components/template/Footer"
 import Link from "next/link"
 
-export default function Manual () {
+export default function Manual() {
     return (
-        <div className="w-screen max-w-[700px] p-6 mx-auto">
+        <div className="w-screen max-w-[700px] p-6 mx-auto relative">
             <Link href="/"><ActionButton label="Voltar" /></Link>
- 
-            <ManualTitle text="Manual" level={40}/>
-            <ManualTitle text="Menu 1" level={35}/>
-            <Topic>Selecionar - Escolher qual API manter ON, já mantém o servidor principal (this) no modo ON</Topic>
-            <Topic>Keep API ON -  A resposta vem diretamente da API, ou é false em caso de erro.</Topic>
 
-            <ManualTitle text="Ações" level={35}/>
-            <Topic>Chamar API - Chama a API principal 1 vezes, tem timeout de 10s </Topic>
-            <Topic>Chamar todos - Vai realizar um request para cada um deles, timeout de 30s</Topic>
-            <Topic>Forçar Todos - Vai ficar fazendo requests até que todos retornem algo</Topic>
+            <ManualTitle text="Manual" level="45" />
 
-            <ManualTitle text="Modificar Tempo" level={35}/>
-            {/* <Topic></Topic> */}
-            {/* <Topic></Topic> */}
-            <Topic>/setTime - enviar POST com os dados do novo tempo (h e m) + type (main, this)</Topic>
+            <ManualTitle text="Menu 1" level="35" />
+            <Topic><strong>Selecionar</strong> - Escolher qual API manter ON, já mantém o servidor principal (this) no modo ON</Topic>
+            <Topic><strong>Keep API ON</strong> -  A resposta vem diretamente da API, ou é false em caso de erro.</Topic>
 
 
-            <ManualTitle text="Manual" level={35}/>
-            <ManualTitle text="Manual" level={35}/>
-            <ManualTitle text="Manual" level={35}/>
-            <ManualTitle text="Manual" level={35}/>
+            <ManualTitle text="Ações" level="35" />
+            <Topic><strong>Chamar API</strong> - Chama a API principal 1 vezes, tem timeout de 10s </Topic>
+            <Topic><strong>Chamar todos -</strong> Vai realizar um request para cada um deles, timeout de 30s</Topic>
+            <Topic><strong>Forçar Todos</strong> - Vai ficar fazendo requests até que todos retornem algo</Topic>
+            <Topic>Os gráficos mostram o usado (azul) e o restante (cinza)</Topic>
+
+
+
+            <ManualTitle text="Monitoramento do tempo" level="35" />
+            <Topic><strong>Last Start</strong> - Última vez que iniciou</Topic>
+            <Topic><strong>Last Discount</strong> - Última vez que fez o desconto</Topic>
+
+
+            <ManualTitle text="Modificar Tempo" level="35" />
+            <Topic><strong>/resetTime</strong> - Só em dev, reinicia os tempos</Topic>
+            <Topic><strong>/setTime</strong> - enviar POST com os dados do novo tempo (h e m) + type (main, this)</Topic>
+
+            <div className="mt-16">
+            <footer
+                className="mt-6 px-4 py-2 text-xs bg-black w-fit absolute bottom-0 right-0 rounded-md shadow-md"
+            >
+                &copy; Victor Spichenkoff 2024
+            </footer>
+
+            </div>
         </div>
     )
 }
