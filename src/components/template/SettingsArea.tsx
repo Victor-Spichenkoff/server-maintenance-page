@@ -11,7 +11,10 @@ export const SettingsArea = () => {
     return (
         <main className="flex flex-col items-center p-8">
             <Status update={forceUpdate} />
-            <SettingsToggleArea setForceUpdate={setForceUpdate}/>
+            <SettingsToggleArea 
+                setForceUpdate={setForceUpdate}
+                forceUpdate={forceUpdate}
+                />
             <TimeMonitoringArea />
         </main>
     )

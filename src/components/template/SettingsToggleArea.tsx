@@ -12,12 +12,15 @@ import { ShowMessage } from "../functions/ShowMessage"
 
 interface ISettingsArea {
     setForceUpdate: any
+    forceUpdate?: any
 }
 
 
-export const SettingsToggleArea = ({ setForceUpdate }: ISettingsArea) => {
+export const SettingsToggleArea = ({ setForceUpdate, forceUpdate }: ISettingsArea) => {
     const [isApiOn, setIsApiOn] = useState(false)
     const [isLoading, startTransition] = useTransition()
+
+    useEffect(() => {}, [forceUpdate])
 
     const { toast } = useToast()
 
@@ -37,7 +40,6 @@ export const SettingsToggleArea = ({ setForceUpdate }: ISettingsArea) => {
             } catch {
                 ShowMessage("Erro ao mudar API", 'error', toast)
             }
-
         })
     }
 
@@ -45,7 +47,7 @@ export const SettingsToggleArea = ({ setForceUpdate }: ISettingsArea) => {
         axios(`${baseUrl}/apiStatus`)
             .then(res => setIsApiOn(res.data))
             .catch(res => setIsApiOn(false))
-    }, [])
+    }, [forceUpdate])
 
 
     return (<>
@@ -54,7 +56,10 @@ export const SettingsToggleArea = ({ setForceUpdate }: ISettingsArea) => {
         <div className="self-start mt-12 flex items-center justify-between w-full">
             
 
-            <SelectApi setForceUpdate={setForceUpdate} />
+            <SelectApi 
+                setForceUpdate={setForceUpdate} 
+                forceUpdate={forceUpdate}
+                />
 
             <ToggleItem 
             isChecked={isApiOn} 

@@ -9,4 +9,3 @@
 
 
 # Todo - Front
-- Imlementar o HightMessages BTN

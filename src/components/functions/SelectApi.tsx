@@ -16,10 +16,11 @@ import { baseUrl } from "@/global"
 
 interface ISelectApi {
   setForceUpdate: any
+  forceUpdate?: any
 }
 
 
-export const SelectApi = ({ setForceUpdate }: ISelectApi) => {
+export const SelectApi = ({ setForceUpdate, forceUpdate }: ISelectApi) => {
 
   const [currentOnIndex, setCurrentOnIndex] = useState(-2)
 
@@ -29,7 +30,7 @@ export const SelectApi = ({ setForceUpdate }: ISelectApi) => {
         setCurrentOnIndex(res.data)
       })
       .catch(console.log)//arrumar catch
-  }, [])
+  }, [forceUpdate])
 
 
 

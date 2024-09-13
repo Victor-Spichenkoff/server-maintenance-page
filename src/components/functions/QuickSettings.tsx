@@ -50,30 +50,32 @@ export const QuickSettings = () => {
   const allOnce = async () => {
     resetValues()
     setShowStatus(true)
-    try {
-      const res = await axios(`${baseUrl}/callAllOnce`, { timeout: 50_000 })
-
-      console.log(res.data)
-
-      if (res.data.isAllWorking)
-        return setSuccessStatus(`Tudo funcionando \n${res.data.working}de${res.data.total}`)
-      //nem todos
-
-      const notWorkingNames = res.data.errors.join(", ")
-
-      return setErrorStatus(`ERRO:
-                ${res.data.working} de ${res.data.total}
-                Errados: ${notWorkingNames}`)
-
-    } catch (e) {
-      console.log(e)
-      const error = e as AxiosError
-
-      if (error.code === 'ECONNABORTED')
-        return setErrorStatus("Demorou Muito")
-
-      setErrorStatus("Erro na requisição")
-    }
+    startTransition(async () => {
+      try {
+        const res = await axios(`${baseUrl}/callAllOnce`, { timeout: 50_000 })
+  
+        console.log(res.data)
+  
+        if (res.data.isAllWorking)
+          return setSuccessStatus(`Tudo funcionando \n${res.data.working} de ${res.data.total}`)
+        //nem todos
+  
+        const notWorkingNames = res.data.errors.join(", ")
+  
+        return setErrorStatus(`ERRO:
+                  ${res.data.working} de ${res.data.total}
+                  Errados: ${notWorkingNames}`)
+  
+      } catch (e) {
+        console.log(e)
+        const error = e as AxiosError
+  
+        if (error.code === 'ECONNABORTED')
+          return setErrorStatus("Demorou Muito")
+  
+        setErrorStatus("Erro na requisição")
+      }
+    })
   }
 
   //ERROR QUNADO TODAS ESTÂO FUNCIONANOD, FORCEaLL == TRUE, O FORCE ONCE RETORNA UM ERRO

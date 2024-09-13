@@ -19,8 +19,8 @@ export const ForceAll = ({ setSuccessStatus, setErrorStatus, setShowStatus, star
     const [stop, setStop] = useState(false)
 
     const recursiveRequest = async (times: number) => {
-        if(stop)
-            return
+        // if(stop)
+        //     return
 
         setErrorStatus("")
         setSuccessStatus("")
@@ -36,7 +36,7 @@ export const ForceAll = ({ setSuccessStatus, setErrorStatus, setShowStatus, star
                 if (res.data.isAllWorking)
                     return setSuccessStatus(`Todas as ${res.data.working} funcionando!`)
 
-                //deu errado
+
                 setErrorStatus(`Erro: 
                 tentativa: ${times}/10
                 Espere 10 segundos...
