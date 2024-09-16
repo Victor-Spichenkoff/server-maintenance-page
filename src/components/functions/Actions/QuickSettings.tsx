@@ -1,11 +1,11 @@
 import { useCallback, useState, useTransition } from "react"
-import { ActionButton } from "../template/ActionButton"
+import { ActionButton } from "../../template/ActionButton"
 import { requestEndPointWithTimeout } from "@/utils/requets"
 import axios, { AxiosError, isAxiosError } from "axios"
 import { baseUrl } from "@/global"
-import { ForceAll } from "./ForceAll"
-import { ToggleItem } from "./ToggleItem"
-import { HighMessages } from "./HighMessages"
+import { ForceAll } from "../ForceAll"
+import { ToggleItem } from "../ToggleItem"
+import { HighMessages } from "../HighMessages"
 
 
 var currentTimeout: NodeJS.Timeout

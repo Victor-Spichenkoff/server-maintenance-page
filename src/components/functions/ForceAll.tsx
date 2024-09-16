@@ -49,9 +49,8 @@ export const ForceAll = ({ setSuccessStatus, setErrorStatus, setShowStatus, star
             }
 
 
-            currentTimeout = setTimeout(() => recursiveRequest(times), 1_000)
+            currentTimeout = setTimeout(() => recursiveRequest(times), 10_000)
         })
-
     }
 
     const handleForceAllClick = () => {

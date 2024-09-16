@@ -1,7 +1,7 @@
 import { useEffect, useState, useTransition } from "react"
 import { SelectApi } from "../functions/SelectApi"
 import { ToggleItem } from "../functions/ToggleItem"
-import { QuickSettings } from "../functions/QuickSettings"
+import { QuickSettings } from "../functions/Actions/QuickSettings"
 import axios from "axios"
 import { baseUrl } from "@/global"
 import { TimeMonitoringArea } from "./TimeMonitoringArea"
@@ -20,7 +20,7 @@ export const SettingsToggleArea = ({ setForceUpdate, forceUpdate }: ISettingsAre
     const [isApiOn, setIsApiOn] = useState(false)
     const [isLoading, startTransition] = useTransition()
 
-    useEffect(() => {}, [forceUpdate])
+    useEffect(() => {1+1}, [forceUpdate])
 
     const { toast } = useToast()
 
