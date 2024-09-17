@@ -92,6 +92,7 @@ export const TestOne = () => {
                     else
                         handleTestOneClick(Number(api.id))
                 }}
+                key={api.id}
             />
         )
     })

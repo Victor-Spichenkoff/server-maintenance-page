@@ -20,8 +20,8 @@ export const QuickSettings = () => {
 
   const resetValues = () => {
     setShowStatus(false)
-    setErrorStatus("")
-    setSuccessStatus("")
+    // setErrorStatus("")
+    // setSuccessStatus("")
   }
 
   useCallback(() => {
