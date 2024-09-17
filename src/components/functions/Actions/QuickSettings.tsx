@@ -6,6 +6,8 @@ import { baseUrl } from "@/global"
 import { ForceAll } from "../ForceAll"
 import { ToggleItem } from "../ToggleItem"
 import { HighMessages } from "../HighMessages"
+import { ActionStatus } from "./ActionStatus"
+import { TestOne } from "./TestOne"
 
 
 var currentTimeout: NodeJS.Timeout
@@ -78,9 +80,6 @@ export const QuickSettings = () => {
     })
   }
 
-  //ERROR QUNADO TODAS ESTÂO FUNCIONANOD, FORCEaLL == TRUE, O FORCE ONCE RETORNA UM ERRO
-  //DICAS> QUANDO TUDO CERTO, A API RETORNA 10004 no número das que estão funcoiando (worknig)
-
   return (
     <div className="flex flex-col w-full">
       <HighMessages />
@@ -96,32 +95,18 @@ export const QuickSettings = () => {
             startTransition={startTransition}
           />
         </div>
-        {showStatus && !isLoading ? (
-          <div className={`flex flex-[2] justify-center items-center
-                border ml-8
-                ${successStatus && 'border-sucess text-sucess p-2'}  
-                ${errorStatus && 'border-error text-error p-2'}
-                rounded-md`}>
+        <ActionStatus
+          successStatus={successStatus}
+          errorStatus={errorStatus}
+          isLoading={isLoading}
+          showStatus={showStatus}
+        />
 
-            <div style={{ whiteSpace: 'pre-line' }}>
-              {errorStatus}
-            </div>
-            <div style={{ whiteSpace: 'pre-line' }}>
-              {successStatus}
-            </div>
-          </div>
 
-        ) : (
-          !isLoading && (<div className="flex flex-[2]"></div>)
-        )}
-
-        {isLoading && (
-          <div className="flex flex-[2] justify-center items-center
-                border border-gray-blue ml-8 
-                rounded-md">
-            Carregando...
-          </div>)}
       </div>
+
+
+      <TestOne />
 
     </div>
   )
