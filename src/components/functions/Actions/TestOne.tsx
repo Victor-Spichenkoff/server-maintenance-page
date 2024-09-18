@@ -15,10 +15,15 @@ export const TestOne = () => {
     const [isLoading, startTransition] = useTransition()
     const [errorStatus, setErrorStatus] = useState("")
     const [force, setForce] = useState(false)
+    const [callingId, setCallingId] = useState(-1)
+    const [stop, setStop] = useState(false)
 
 
     const handleTestOneClick = (id: string | number) => {
+        setStop(false)
+
         setShowStatus(true)
+        setCallingId(Number(id))
         startTransition(async () => {
             try {
                 const res = await axios(`${baseUrl}/test/one/${id}`)
@@ -33,6 +38,8 @@ export const TestOne = () => {
 
     //Para forçar
     const recursiveRequest = async (times: number, id: number) => {
+        if (stop)
+            return
 
         setErrorStatus("")
         setSuccessStatus("")
@@ -70,6 +77,8 @@ export const TestOne = () => {
 
     const handleForceStartOne = (id: number) => {
         setShowStatus(true)
+        setStop(false)
+        setCallingId(id)
         recursiveRequest(0, id)
     }
 
@@ -79,14 +88,30 @@ export const TestOne = () => {
     }
 
 
+    const handleCancell = () => {
+        clearTimeout(currentTimeout)
+        setSuccessStatus("")
+        setCallingId(-1)
+        setStop(true)
+
+
+        setErrorStatus(`CANCELADO`)
+    }
+
+
     const allButtons = selectablePoints.map((api, i) => {
         if (selectablePoints.length - 2 <= i)
             return null
 
         return (
+
             <ActionButton
-                label={api.label}
+                label={callingId == api.id ? "Cancelar" : api.label}
+                className={callingId == api.id ? "bg-error hover:bg-[#8d0b0b]" : ""}
                 onClick={() => {
+                    if (callingId == api.id)
+                        return handleCancell()
+
                     if (force)
                         handleForceStartOne(Number(api.id))
                     else

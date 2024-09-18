@@ -38,6 +38,12 @@ export default function Manual() {
             <Topic>Se refe a quanto já usou. Começa em no mês</Topic>
 
 
+
+
+            <ManualTitle text="Mudança render -> vercel" level="35" />
+            <Topic>Não faz mais req para manter o this ON</Topic>
+
+
             <div className="mt-16">
             <footer
                 className="mt-6 px-4 py-2 text-xs bg-black w-fit absolute bottom-0 right-0 rounded-md shadow-md"

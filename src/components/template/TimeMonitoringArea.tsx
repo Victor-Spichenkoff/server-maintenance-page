@@ -76,7 +76,8 @@ export const TimeMonitoringArea = () => {
                         remaningMinutes={times.main.minutes}
                         title="Main"
                     />
-                    <CircleGraphic className="border-r border-gray-500"
+                    <CircleGraphic 
+                        className="border-r border-gray-500"
                         remaningHours={times.this.hours}
                         remaningMinutes={times.this.minutes}
                         title="This"

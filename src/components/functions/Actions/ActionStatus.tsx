@@ -27,7 +27,7 @@ export const ActionStatus = ({ isLoading, showStatus, errorStatus, successStatus
                   rounded-md`}>
 
             <div style={{ whiteSpace: 'pre-line' }}>
-                {errorStatus}
+                {!successStatus && errorStatus}
             </div>
             <div style={{ whiteSpace: 'pre-line' }}>
                 {successStatus}

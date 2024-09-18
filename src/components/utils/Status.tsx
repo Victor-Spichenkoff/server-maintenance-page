@@ -26,11 +26,6 @@ export const Status = ({ update }: IStatus) => {
     }, [update])
 
 
-    const changeOnApi = () => {
-        
-    }
-
-
     return (
         <div 
             className={` text-slate-100 border border-gold min-w-[280px] text-center px-4 py-2 rounded-xl text-2xl

@@ -20,7 +20,7 @@ export const SettingsToggleArea = ({ setForceUpdate, forceUpdate }: ISettingsAre
     const [isApiOn, setIsApiOn] = useState(false)
     const [isLoading, startTransition] = useTransition()
 
-    useEffect(() => {1+1}, [forceUpdate])
+    useEffect(() => { 1 + 1 }, [forceUpdate])
 
     const { toast } = useToast()
 
@@ -31,7 +31,7 @@ export const SettingsToggleArea = ({ setForceUpdate, forceUpdate }: ISettingsAre
         startTransition(async () => {
             try {
                 const res = await axios(`${baseUrl}${endpoint}`)
-                if(res.data == "Iniciado")
+                if (res.data == "Iniciado")
                     setIsApiOn(true)
                 else
                     setIsApiOn(false)
@@ -51,21 +51,21 @@ export const SettingsToggleArea = ({ setForceUpdate, forceUpdate }: ISettingsAre
 
 
     return (<>
-    <Loading isLoading={isLoading} />
-    <Toaster /> 
+        <Loading isLoading={isLoading} />
+        <Toaster />
         <div className="self-start mt-12 flex items-center justify-between w-full">
-            
 
-            <SelectApi 
-                setForceUpdate={setForceUpdate} 
+
+            <SelectApi
+                setForceUpdate={setForceUpdate}
                 forceUpdate={forceUpdate}
-                />
+            />
 
-            <ToggleItem 
-            isChecked={isApiOn} 
-            onCheckChange={handleApiStateChange} 
-            label="Keep API ON" 
-            setForceUpdate={setForceUpdate}
+            <ToggleItem
+                isChecked={isApiOn}
+                onCheckChange={handleApiStateChange}
+                label="Keep API ON"
+                setForceUpdate={setForceUpdate}
             />
 
         </div>

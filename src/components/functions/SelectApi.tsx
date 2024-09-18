@@ -36,10 +36,8 @@ export const SelectApi = ({ setForceUpdate, forceUpdate }: ISelectApi) => {
 
   const changeCurrentOn = async (endpoint: string, currentState: boolean) => {
     setForceUpdate(Math.random())//para recarregar o status de longe
-    if (currentState) {// está desligando (mudou o item para off)
-    // if (itemID == currentOnIndex) {// está desligando (mudou o item para off)
+    if (currentState) {
       try {
-        console.log("Entrou para deixar off")
         const res = await axios(`${baseUrl}/turnoff`)
         setCurrentOnIndex(-1)
         return
@@ -53,38 +51,27 @@ export const SelectApi = ({ setForceUpdate, forceUpdate }: ISelectApi) => {
       .then(async () => {
         const newCurrentOnId = await axios(`${baseUrl}/currenton/id`)
         setCurrentOnIndex(newCurrentOnId.data)
-        // console.log("Resposta da API, ID = " + newCurrentOnId.data)
       })
       .catch(console.log)//arrumar catch
   }
 
 
-  // const elemets = selectablePoints.map((item, i) => (
-  //   <ToggleItem
-  //     key={i}
-  //     label={item.label}
-  //     startValue={item.id == currentOnIndex}
-  //     onCheckChange={() => changeCurrentOn(item.endpoint, Number(item.id))}
-  //   />
-  // ))
-  const elemets = selectablePoints.map((item, i) => {
-    // console.log("Item com id " + item.id + "; valor checke: " + (item.id == currentOnIndex) )
-    return (<ToggleItem
+  const elemets = selectablePoints.map((item, i) => (
+  <ToggleItem
       key={i}
       label={item.label}
       isChecked={item.id == currentOnIndex}
       onCheckChange={() => changeCurrentOn(item.endpoint, (item.id == currentOnIndex))}
-      // onCheckChange={() => changeCurrentOn(item.endpoint, Number(item.id))}
     />
-    )
-  })
+    ))
+
 
 
   return (
     <div className="relative">
       <DropdownMenu modal={false}>
         <DropdownMenuTrigger>
-          <ActionButton label="Selecionar"/>
+          <ActionButton label="Selecionar" />
         </DropdownMenuTrigger>
 
         <DropdownMenuContent className=" bg-gray-blue w-[300px] px-4  -mr-[200px] text-gray-200 text-xl border-none border-hight-border shadow-lg" sideOffset={17}>
