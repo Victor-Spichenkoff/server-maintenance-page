@@ -1,14 +1,14 @@
 import { useEffect, useState, useTransition } from "react"
 import { SelectApi } from "../functions/SelectApi"
-import { ToggleItem } from "../functions/ToggleItem"
+import { ToggleItem } from "../utils/ToggleItem"
 import { QuickSettings } from "../functions/Actions/QuickSettings"
 import axios from "axios"
 import { baseUrl } from "@/global"
 import { TimeMonitoringArea } from "./TimeMonitoringArea"
-import { Loading } from "../functions/Loading"
+import { Loading } from "../utils/Loading"
 import { useToast } from "@/hooks/use-toast"
 import { Toaster } from "../ui/toaster"
-import { ShowMessage } from "../functions/ShowMessage"
+import { ShowMessage } from "../utils/ShowMessage"
 
 interface ISettingsArea {
     setForceUpdate: any

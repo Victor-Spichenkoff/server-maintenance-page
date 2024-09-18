@@ -1,10 +1,11 @@
-import { CircleGraphic } from "@/components/functions/TimeMonitoring/Graphic"
+import { CircleGraphic } from "@/components/functions/Time/Graphic"
 import { baseUrl } from "@/global"
 import { IRemaningResponse } from "@/types/remaning"
 import axios from "axios"
 import { useEffect, useState, useTransition } from "react"
 import { RotateCw } from 'lucide-react'
-import { Loading } from "../functions/Loading"
+import { Loading } from "../utils/Loading"
+import { ChangeTime } from "../functions/Time/ChangeTimes"
 
 export const TimeMonitoringArea = () => {
     const [times, setTimes] = useState<IRemaningResponse | null>(null)
@@ -80,7 +81,6 @@ export const TimeMonitoringArea = () => {
                         remaningMinutes={times.this.minutes}
                         title="This"
                     />
-                    {/* <CircleGraphic className="border-l border-gray-500" /> */}
 
                 </div>
 
@@ -93,6 +93,11 @@ export const TimeMonitoringArea = () => {
             {!times && isError && (
                 <div className="mt-24 text-error">ERRO ao pegar os Dados</div>
             )}
+
+
+            <ChangeTime />
+
+
         </div>
     )
 }

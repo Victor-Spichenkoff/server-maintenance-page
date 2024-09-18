@@ -3,7 +3,7 @@ import { ActionStatus } from "./ActionStatus"
 import { useState, useTransition } from "react"
 import { baseUrl } from "@/global"
 import { selectablePoints } from "@/data/selectablePoints"
-import { ToggleItem } from "../ToggleItem"
+import { ToggleItem } from "../../utils/ToggleItem"
 import axios from "axios"
 
 

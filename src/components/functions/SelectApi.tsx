@@ -7,7 +7,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
-import { ToggleItem } from "./ToggleItem"
+import { ToggleItem } from "../utils/ToggleItem"
 import { selectablePoints } from "@/data/selectablePoints"
 import { useEffect, useState } from "react"
 import axios from "axios"

@@ -1,11 +1,15 @@
 import { useEffect, useState, useTransition } from "react"
-import { ToggleItem } from "./ToggleItem"
+
 import axios from "axios"
 import { baseUrl } from "@/global"
-import { ShowMessage } from "./ShowMessage"
+
 import { useToast } from "@/hooks/use-toast"
-import { Loading } from "./Loading"
-import { Toaster } from "../ui/toaster"
+import { ShowMessage } from "@/components/utils/ShowMessage"
+import { ToggleItem } from "@/components/utils/ToggleItem"
+import { Toaster } from "@/components/ui/toaster"
+import { Loading } from "@/components/utils/Loading"
+
+
 
 export const HighMessages = () => {
     const [isOn, setIsOn] = useState(false)

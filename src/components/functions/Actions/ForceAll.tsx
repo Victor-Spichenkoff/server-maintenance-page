@@ -1,7 +1,8 @@
 import { TransitionStartFunction, useState } from "react"
-import { ActionButton } from "../template/ActionButton"
+
 import axios from "axios"
 import { baseUrl } from "@/global"
+import { ActionButton } from "@/components/template/ActionButton"
 
 interface ForceAll {
     setErrorStatus: (n: string) => void

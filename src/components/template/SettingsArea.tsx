@@ -1,7 +1,7 @@
 "use client"
 
 import { useState } from "react"
-import { Status } from "../functions/Status"
+import { Status } from "../utils/Status"
 import { SettingsToggleArea } from "./SettingsToggleArea"
 import { TimeMonitoringArea } from "./TimeMonitoringArea"
 

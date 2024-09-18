@@ -33,6 +33,11 @@ export default function Manual() {
             <Topic><strong>/resetTime</strong> - Só em dev, reinicia os tempos</Topic>
             <Topic><strong>/setTime</strong> - enviar POST com os dados do novo tempo (h e m) + type (main, this)</Topic>
 
+
+            <ManualTitle text="Modificar Usage" level="35" />
+            <Topic>Se refe a quanto já usou. Começa em no mês</Topic>
+
+
             <div className="mt-16">
             <footer
                 className="mt-6 px-4 py-2 text-xs bg-black w-fit absolute bottom-0 right-0 rounded-md shadow-md"
