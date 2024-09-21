@@ -24,7 +24,7 @@ export default function RootLayout({
         {/* <link rel="shortcut icon" href="./logo.png" type="image/x-icon" /> */}
         <link rel="manifest" href="/manifest.json" />
         <link rel="apple-touch-icon" href="/logo.png" />
-        <meta name="theme-color" content="#111C2E" />
+        <meta name="theme-color" content="#111C2E2e" />
       </head>
       <body className={cn(inter.className,
         "bg-main text-gray-200  min-h-screen mx-auto relative overflow-x-hidden")}>
