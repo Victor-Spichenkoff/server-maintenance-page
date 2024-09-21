@@ -30,10 +30,16 @@ export const TestOne = () => {
                 const res = await axios(`${baseUrl}/test/one/${id}`, {
                     signal: controller.signal
                 })
+
+
                 setSuccessStatus("Funcionando \n" + res.data)
-            } catch {
+            } catch(e: any) {
                 if (callingId >= 0)
                     setErrorStatus("Não Funcionou")
+                else if (e.status == 500)
+                    setErrorStatus("Erro de Timeout")
+                else
+                    setErrorStatus("Erro inesperado")
             }
 
             setCallingId(-1)
@@ -106,8 +112,7 @@ export const TestOne = () => {
         setSuccessStatus("")
         setCallingId(-1)
 
-        setTimeout(() => setErrorStatus(`CANCELADO`), 50)
-        
+        setTimeout(() => setErrorStatus(`CANCELADO`), 20)
     }
 
 
