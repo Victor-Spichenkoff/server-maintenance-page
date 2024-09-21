@@ -36,7 +36,7 @@ export const ChangeTime = () => {
             })
 
             setSuccessMessage("Mudado")
-        } catch {}
+        } catch { }
     }
 
 
@@ -64,6 +64,7 @@ export const ChangeTime = () => {
                 <label className="mt-4">
                     <input
                         type="checkbox"
+                        readOnly
                         checked={isMainChecked}
                         className="mr-1"
                     />
@@ -71,6 +72,7 @@ export const ChangeTime = () => {
                 </label>
                 <label className="mb-6 opacity-55">
                     <input
+                        readOnly
                         type="checkbox"
                         checked={!isMainChecked}
                         className="mr-1"

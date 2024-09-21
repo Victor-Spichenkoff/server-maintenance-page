@@ -42,6 +42,7 @@ export default function Manual() {
 
             <ManualTitle text="Mudança render -> vercel" level="35" />
             <Topic>Não faz mais req para manter o this ON</Topic>
+            <Topic>O this vai ter a mesma medida do MaIN, nos tempos</Topic>
 
 
             <div className="mt-16">

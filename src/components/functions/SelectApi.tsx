@@ -36,6 +36,9 @@ export const SelectApi = ({ setForceUpdate, forceUpdate }: ISelectApi) => {
 
   const changeCurrentOn = async (endpoint: string, currentState: boolean) => {
     setForceUpdate(Math.random())//para recarregar o status de longe
+    if (process.env.NODE_ENV == "production")//lidar com o lag maior
+      setTimeout(() => setForceUpdate(Math.random()), 3000)
+
     if (currentState) {
       try {
         const res = await axios(`${baseUrl}/turnoff`)
@@ -57,21 +60,23 @@ export const SelectApi = ({ setForceUpdate, forceUpdate }: ISelectApi) => {
 
 
   const elemets = selectablePoints.map((item, i) => (
-  <ToggleItem
+    <ToggleItem
       key={i}
       label={item.label}
       isChecked={item.id == currentOnIndex}
       onCheckChange={() => changeCurrentOn(item.endpoint, (item.id == currentOnIndex))}
     />
-    ))
+  ))
 
 
 
   return (
     <div className="relative">
       <DropdownMenu modal={false}>
-        <DropdownMenuTrigger>
-          <ActionButton label="Selecionar" />
+        <DropdownMenuTrigger asChild>
+          <div>
+            <ActionButton label="Selecionar" />
+          </div>
         </DropdownMenuTrigger>
 
         <DropdownMenuContent className=" bg-gray-blue w-[300px] px-4  -mr-[200px] text-gray-200 text-xl border-none border-hight-border shadow-lg" sideOffset={17}>

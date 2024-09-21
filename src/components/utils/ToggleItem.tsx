@@ -6,7 +6,7 @@ interface IToggleItem {
     isChecked?: boolean
     label: string
     onCheckChange: () => any
-    setForceUpdate?: any
+    setForceUpdate?: (...n:any) => any
     className?: string
 }
 
@@ -15,7 +15,8 @@ export const ToggleItem = ({ isChecked, label, onCheckChange, setForceUpdate, cl
 
     const handleCheckChange = () => {
         onCheckChange()
-        setForceUpdate(Math.random())
+        if(setForceUpdate)
+            setForceUpdate(Math.random())
     }
 
 

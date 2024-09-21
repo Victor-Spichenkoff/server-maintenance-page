@@ -16,41 +16,47 @@ export const TestOne = () => {
     const [errorStatus, setErrorStatus] = useState("")
     const [force, setForce] = useState(false)
     const [callingId, setCallingId] = useState(-1)
-    const [stop, setStop] = useState(false)
+    const [abortController, setAbortController] = useState<AbortController | null>(null)
 
 
-    const handleTestOneClick = (id: string | number) => {
-        setStop(false)
+    //simples
+    const testOnlyOne = (id: string | number) => {
+        const controller = new AbortController()
+        setAbortController(controller)
 
-        setShowStatus(true)
-        setCallingId(Number(id))
         startTransition(async () => {
+
             try {
-                const res = await axios(`${baseUrl}/test/one/${id}`)
+                const res = await axios(`${baseUrl}/test/one/${id}`, {
+                    signal: controller.signal
+                })
                 setSuccessStatus("Funcionando \n" + res.data)
             } catch {
-                setErrorStatus("Não Funcionou")
+                if (callingId >= 0)
+                    setErrorStatus("Não Funcionou")
             }
+
+            setCallingId(-1)
         })
     }
 
-
-
     //Para forçar
     const recursiveRequest = async (times: number, id: number) => {
-        if (stop)
-            return
+        const controller = new AbortController()
+        setAbortController(controller)
 
-        setErrorStatus("")
-        setSuccessStatus("")
         startTransition(async () => {
+
             times += 1
 
             if (times > 10)
                 return setErrorStatus("Excesso de tentativas atingido! (10)")
 
             try {
-                const res = await axios(`${baseUrl}/test/one/${id}`, { timeout: 8_000 })
+                const res = await axios(`${baseUrl}/test/one/${id}`, {
+                    timeout: 8_000,
+                    signal: controller.signal
+                })
 
 
                 return setSuccessStatus(`Ligado\n` + res.data)
@@ -66,37 +72,47 @@ export const TestOne = () => {
                         `)
                 else
                     setErrorStatus("Erro no request!")
+            } 
 
-
-            }
 
             currentTimeout = setTimeout(() => recursiveRequest(times, id), 10_000)
         })
     }
 
 
+    //btn sem force
+    const handleTestOneClick = (id: number) => {
+        setShowStatus(true)
+        setCallingId(Number(id))
+        setErrorStatus("")
+        setSuccessStatus("")
+        testOnlyOne(id)
+    }
+
+
+    //com FORCE
     const handleForceStartOne = (id: number) => {
         setShowStatus(true)
-        setStop(false)
         setCallingId(id)
+        setErrorStatus("")
+        setSuccessStatus("")
         recursiveRequest(0, id)
     }
 
-
-    const handleForceChange = () => {
-        setForce(!force)
-    }
-
-
+    //Cancelar
     const handleCancell = () => {
+        abortController?.abort()
         clearTimeout(currentTimeout)
         setSuccessStatus("")
         setCallingId(-1)
-        setStop(true)
 
-
-        setErrorStatus(`CANCELADO`)
+        setTimeout(() => setErrorStatus(`CANCELADO`), 50)
+        
     }
+
+
+
+    const handleForceChange = () => setForce(!force)
 
 
     const allButtons = selectablePoints.map((api, i) => {

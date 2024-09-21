@@ -17,7 +17,12 @@ export const ActionStatus = ({ isLoading, showStatus, errorStatus, successStatus
     if (!showStatus)
         return <div className="flex flex-[2]"></div>
 
-
+    console.log(`
+        error - ${errorStatus}
+        success - ${successStatus}
+        isLoading - ${isLoading}
+        showStatus - ${showStatus}
+        `)
     return (<>
 
         <div className={`flex flex-[2] justify-center items-center
