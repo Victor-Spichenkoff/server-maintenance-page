@@ -32,8 +32,6 @@ export default function RootLayout({
           <ToastContainer />
           {children}
         </NextUiProvider>
-
-
       </body>
     </html>
   )
