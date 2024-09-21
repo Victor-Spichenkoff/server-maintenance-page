@@ -52,7 +52,6 @@ export const TestOne = () => {
         setAbortController(controller)
 
         startTransition(async () => {
-
             times += 1
 
             if (times > 10)
@@ -65,7 +64,9 @@ export const TestOne = () => {
                 })
 
 
-                return setSuccessStatus(`Ligado\n` + res.data)
+                setSuccessStatus(`Ligado\n` + res.data)
+                setCallingId(-1)
+                return
             } catch (e: any) {
 
                 if (e.code === 'ECONNABORTED')
@@ -104,6 +105,7 @@ export const TestOne = () => {
         setSuccessStatus("")
         recursiveRequest(0, id)
     }
+
 
     //Cancelar
     const handleCancell = () => {
