@@ -5,6 +5,7 @@ import { baseUrl } from "@/global"
 import { selectablePoints } from "@/data/selectablePoints"
 import { ToggleItem } from "../../utils/ToggleItem"
 import axios from "axios"
+import { TestExtraActions } from "./TestExtraActions"
 
 
 var currentTimeout: any
@@ -33,7 +34,7 @@ export const TestOne = () => {
 
 
                 setSuccessStatus("Funcionando \n" + res.data)
-            } catch(e: any) {
+            } catch (e: any) {
                 if (callingId >= 0)
                     setErrorStatus("Não Funcionou")
                 else if (e.status == 500)
@@ -71,15 +72,14 @@ export const TestOne = () => {
 
                 if (e.code === 'ECONNABORTED')
                     setErrorStatus("Demorou Muito")
-
-                if (e.status == 500)
+                else if (e.status == 500)
                     setErrorStatus(`Erro: 
                         tentativa: ${times}/10
                         Espere 8 segundos...
                         `)
                 else
                     setErrorStatus("Erro no request!")
-            } 
+            }
 
 
             currentTimeout = setTimeout(() => recursiveRequest(times, id), 10_000)
@@ -164,6 +164,16 @@ export const TestOne = () => {
                 showStatus={showStatus}
             />
 
+        </div>
+
+        <div>
+
+            <TestExtraActions
+                setErrorStatus={setErrorStatus}
+                setShowStatus={setShowStatus}
+                startTransition={startTransition}
+                setSuccessStatus={setSuccessStatus}
+            />
         </div>
     </>)
 }

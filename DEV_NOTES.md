@@ -9,3 +9,6 @@
 
 
 # Todo - Front
+- Cria o HUB
+    - Adicionar o notForce=true no portfolio e static port
+- Criar um inicializador forçado do THIS

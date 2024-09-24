@@ -2,7 +2,7 @@ import { cn } from "@/lib/utils"
 import { Button } from "../ui/button"
 
 interface IActionButton {
-    label: string
+    label?: string
     onClick?: (e?: any) => void
     disabled?: boolean
     className?: string
