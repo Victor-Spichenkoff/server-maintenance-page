@@ -6,8 +6,8 @@ const Hub = () => {
   return (<>
     <h1 className="text-3xl text-center">Navegar para</h1>
     <div className={`max-w-[416px]  min-h-screen mx-auto relative flex justify-center`}>
-      <div className="flex justify-center gap-y-3 gap-x-2 mt-8">
-        <div className="flex-1 gap-y-3">
+      <div className="w-[80%] flex justify-center gap-y-3 gap-x-2 mt-8">
+        <div className="flex flex-col flex-1 gap-y-3">
           <HubItem
             label="Portfolio"
             href="https://victor-spichenkoff.github.io/portfolio/"
@@ -34,7 +34,7 @@ const Hub = () => {
           />
         </div>
 
-        <div className="flex-1">
+        <div className="flex flex-col flex-1 gap-y-3">
           <HubItem
             label="HTML & CSS"
             href="https://victor-spichenkoff.github.io/b7web-html-css/"

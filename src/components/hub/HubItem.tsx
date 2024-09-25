@@ -7,11 +7,13 @@ interface IHUbITem {
 }
 
 export const HubItem = ({ label, href }: IHUbITem) => {
-    return (
+    return (<>
         <div className="flex justify-center w-full">
-            <Link href={href} className="w-full">
+            <Link href={href} className="w-full" target="_blank">
                 <ActionButton label={label} className="bg-green-500/90 hover:bg-emerald-700 w-full"/>
             </Link>
         </div>
-    )
+        
+
+        </>)
 }
