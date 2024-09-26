@@ -7,8 +7,12 @@
 - 0764D0 - Cor BTNs
 
 
+# Padrões
+- Url de projetos que tenham o "force" (portflios), devem usar ?notReq=true
+
 
 # Todo - Front
 - Cria o HUB
     - Adicionar o notForce=true no portfolio e static port
 - Criar um inicializador forçado do THIS
+- IMplementar a parte de testar as apis, tem no data

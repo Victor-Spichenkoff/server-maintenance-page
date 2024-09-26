@@ -82,7 +82,7 @@ export const TestExtraActions =
         }
 
         return (
-            <div className="mt-8 flex justify-around">
+            <div className="mt-8 flex justify-end gap-x-4">
 
 
                 <ActionButton
@@ -92,7 +92,10 @@ export const TestExtraActions =
                 />
 
                 <Link href={"/hub"}>
-                    <ActionButton label="HUB" />
+                    <ActionButton 
+                    label="HUB" 
+                    className="bg-transparent border-2 border-green-500/90 hover:bg-green-500"
+                    />
                 </Link>
             </div>
         )

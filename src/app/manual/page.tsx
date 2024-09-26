@@ -1,3 +1,4 @@
+import { Alert } from "@/components/manual/Alert"
 import { ManualTitle } from "@/components/manual/ManualTitle"
 import { Topic } from "@/components/manual/Topic"
 import { ActionButton } from "@/components/template/ActionButton"
@@ -22,6 +23,8 @@ export default function Manual() {
             <Topic><strong>Forçar Todos</strong> - Vai ficar fazendo requests até que todos retornem algo</Topic>
             <Topic>Os gráficos mostram o usado (azul) e o restante (cinza)</Topic>
 
+            <Alert>As api em "/" são verificadas usando o THIS. NO HUb é separado do This</Alert>
+
 
 
             <ManualTitle text="Monitoramento do tempo" level="35" />
@@ -36,7 +39,8 @@ export default function Manual() {
 
             <ManualTitle text="Modificar Usage" level="35" />
             <Topic>Se refe a quanto já usou. Começa em no mês</Topic>
-
+            <Topic>Ao não mandar, ele mantém o que está já estava salvo</Topic>
+            <Alert>Se tiver com 0, ele não muda</Alert>
 
 
 
@@ -45,12 +49,20 @@ export default function Manual() {
             <Topic>O this vai ter a mesma medida do MaIN, nos tempos</Topic>
 
 
+
+
+            <ManualTitle text="Hub" level="35" />
+            <Topic>A primeira parte, serve para visitar meus projetos</Topic>
+            <Topic>A segunda, é feita para testar/iniciar todas as minhas APIs</Topic>
+            <Topic>O HUb tem o Force para todos</Topic>
+
+
             <div className="mt-16">
-            <footer
-                className="mt-6 px-4 py-2 text-xs bg-black w-fit absolute bottom-0 right-0 rounded-md shadow-md"
-            >
-                &copy; Victor Spichenkoff 2024
-            </footer>
+                <footer
+                    className="mt-6 px-4 py-2 text-xs bg-black w-fit absolute bottom-0 right-0 rounded-md shadow-md"
+                >
+                    &copy; Victor Spichenkoff 2024
+                </footer>
 
             </div>
         </div>

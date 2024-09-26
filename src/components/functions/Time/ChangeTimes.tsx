@@ -2,43 +2,55 @@ import { ActionButton } from "@/components/template/ActionButton"
 import { Input } from "@/components/ui/input"
 import { baseUrl } from "@/global"
 import axios from "axios"
-import { useState } from "react"
+import { useState, useTransition } from "react"
 
 export const ChangeTime = () => {
-    const [hours, setHours] = useState<number>()
-    const [minutes, setMinutes] = useState<number>()
+    const [hours, setHours] = useState<string>()
+    const [minutes, setMinutes] = useState<string>()
     const [errorMessage, setErroMessage] = useState("")
     const [successMessage, setSuccessMessage] = useState("")
-    const [isMainChecked, setIsMainChecke] = useState(true)
+    const [isMainChecked, setIsMainChecked] = useState(true)
+    const [isLoading, startTranstition] = useTransition()
 
     const checkData = (hours: number, minutes: number) => {
         setErroMessage("")
         setSuccessMessage("")
 
-        // if (hours < 0 || hours > 750 || minutes < 0 || minutes > 60)
-        //     throw setErroMessage("Valor fora do limite")
+        if (hours < 0 || hours > 750 || minutes < 0 || minutes > 60)
+            throw "Valor fora do limite"
+            // throw setErroMessage("Valor fora do limite")
 
 
         if (hours % 1 != 0)
-            throw setErroMessage("Não deve ter vírgula")
+            throw "Não deve ter vírgula"
     }
 
 
     const handleChangeClick = async () => {
 
-        try {
-            checkData(Number(hours), Number(minutes))
+        startTranstition(async () => {
+            try {
+                checkData(Number(hours), Number(minutes))
 
-            await axios.post(`${baseUrl}/setTime`, {
-                type: isMainChecked ? "main" : "this",
-                hours,
-                minutes
-            })
+                await axios.post(`${baseUrl}/setTime`, {
+                    type: isMainChecked ? "main" : "this",
+                    hours,
+                    minutes
+                })
 
-            setSuccessMessage("Mudado")
-        } catch { }
+                setSuccessMessage("Mudado")
+            } catch(e) {
+                console.log(e)
+                if(typeof e == "string")
+                    return setErroMessage(e)
+
+                setErroMessage("Error!")
+            }
+        })
     }
 
+
+    const handleCheckChange = () => setIsMainChecked(!isMainChecked)
 
 
     return (
@@ -50,14 +62,14 @@ export const ChangeTime = () => {
                     type="number"
                     placeholder="horas"
                     value={hours}
-                    onChange={(e) => setHours(Number(e.target.value))}
+                    onChange={(e) => setHours(e.target.value)}
                     className="w-[200px] bg-white/90 text-gray-700 text-center"
                 />
                 <Input
                     type="number"
                     placeholder="minutos"
                     value={minutes}
-                    onChange={(e) => setMinutes(Number(e.target.value))}
+                    onChange={(e) => setMinutes(e.target.value)}
                     className="w-[200px] bg-white/90 text-gray-700 text-center"
                 />
 
@@ -67,16 +79,18 @@ export const ChangeTime = () => {
                         readOnly
                         checked={isMainChecked}
                         className="mr-1"
+                        onChange={handleCheckChange}
                     />
                     Main
                 </label>
-                <label className="mb-6 opacity-55">
+                <label className="mb-6">
                     <input
-                        readOnly
+                        // readOnly
                         type="checkbox"
                         checked={!isMainChecked}
                         className="mr-1"
-                        disabled
+                        onChange={handleCheckChange}
+                    // disabled
                     />
                     This
                 </label>
@@ -86,13 +100,21 @@ export const ChangeTime = () => {
                 <ActionButton
                     label="Enviar"
                     onClick={handleChangeClick}
-                    className=""
+                    className="bg-green-500/90 hover:bg-green-700"
                 />
 
             </div>
 
+            {isLoading && (
+                <div className={`min-w-40 w-fit h-12 self-center rounded-md shadow-md flex justify-center items-center mt-8 mx-auto
+                bg-highlight/40 border border-highlight text-blue-400
+                `}>
+                    Carregando...
+                </div>
+            )}
+
             {errorMessage || successMessage ? (
-                <div className={`w-40 h-12 self-center rounded-md shadow-md flex justify-center items-center mt-8 mx-auto
+                <div className={`min-w-40 w-fit h-12 self-center rounded-md shadow-md flex justify-center items-center mt-8 mx-auto px-2
             ${errorMessage && "bg-red-500/40 border border-error text-red-200"}
             ${successMessage && "bg-emerald-500/40 border border-emerald-600 text-emerald-400"}
                 `}>
