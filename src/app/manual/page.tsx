@@ -2,7 +2,6 @@ import { Alert } from "@/components/manual/Alert"
 import { ManualTitle } from "@/components/manual/ManualTitle"
 import { Topic } from "@/components/manual/Topic"
 import { ActionButton } from "@/components/template/ActionButton"
-import { Footer } from "@/components/template/Footer"
 import Link from "next/link"
 
 export default function Manual() {
@@ -23,7 +22,7 @@ export default function Manual() {
             <Topic><strong>Forçar Todos</strong> - Vai ficar fazendo requests até que todos retornem algo</Topic>
             <Topic>Os gráficos mostram o usado (azul) e o restante (cinza)</Topic>
 
-            <Alert>As api em &quot/&quot são verificadas usando o THIS. NO HUb é separado do This</Alert>
+            <Alert>As api em &ldquo;/&rdquo; são verificadas usando o THIS. No Hub é separado do This</Alert>
 
 
 
