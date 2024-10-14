@@ -7,7 +7,7 @@ import { Footer } from "@/components/template/Footer"
 import Link from "next/link"
 
 const Hub = () => {
-  return (<>
+  return (
     <div className={`max-w-[416px] flex-col items-center min-h-screen mx-auto relative flex justify-center`}>
       <h1 className="text-3xl text-center mt-8">Navegar para</h1>
 
@@ -91,7 +91,7 @@ const Hub = () => {
       </div>
 
     </div>
-  </>)
+  )
 }
 
 export default Hub
