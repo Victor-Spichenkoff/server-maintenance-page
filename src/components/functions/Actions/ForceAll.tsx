@@ -14,10 +14,9 @@ interface ForceAll {
 //erro: NMão reinicia apos mandar cancelar
 //mudei o tmepo para 1s entre cada
 
-var currentTimeout: NodeJS.Timeout
+let currentTimeout: NodeJS.Timeout
 export const ForceAll = ({ setSuccessStatus, setErrorStatus, setShowStatus, startTransition }: ForceAll) => {
     const [isCalling, setIsCalling] = useState(false)
-    const [stop, setStop] = useState(false)
 
     const recursiveRequest = async (times: number) => {
         // if(stop)
@@ -34,8 +33,10 @@ export const ForceAll = ({ setSuccessStatus, setErrorStatus, setShowStatus, star
             try {
                 const res = await axios(`${baseUrl}/callAllOnce/force`, { timeout: 50_000 })
 
-                if (res.data.isAllWorking)
+                if (res.data.isAllWorking) {
+                    clearTimeout(currentTimeout)
                     return setSuccessStatus(`Todas as ${res.data.working} funcionando!`)
+                }
 
 
                 setErrorStatus(`Erro: 
@@ -57,7 +58,6 @@ export const ForceAll = ({ setSuccessStatus, setErrorStatus, setShowStatus, star
     const handleForceAllClick = () => {
         clearTimeout(currentTimeout)
         setShowStatus(true)
-        setStop(false)
         setIsCalling(true)
         recursiveRequest(0)
     }
@@ -66,7 +66,6 @@ export const ForceAll = ({ setSuccessStatus, setErrorStatus, setShowStatus, star
     const handleCancell = () => {
         setSuccessStatus("")
         setIsCalling(false)
-        setStop(() => true)
 
         clearTimeout(currentTimeout)
 
