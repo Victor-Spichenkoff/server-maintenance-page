@@ -41,7 +41,7 @@ export const SelectApi = ({ setForceUpdate, forceUpdate }: ISelectApi) => {
 
     if (currentState) {
       try {
-        const res = await axios(`${baseUrl}/turnoff`)
+        await axios(`${baseUrl}/turnoff`)
         setCurrentOnIndex(-1)
         return
       } catch {

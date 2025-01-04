@@ -31,11 +31,15 @@ const Hub = () => {
           />
           <HubItem
             label="VSS Artigos"
-            href=""
+            href="https://victor-spichenkoff.github.io/vss-artigos-frontend/#/"
           />
           <HubItem
             label="Bingo"
-            href=""
+            href="https://victor-spichenkoff.github.io/bingo-build/"
+          />
+          <HubItem
+            label="Weather"
+            href="https://victor-spichenkoff.github.io/weather/"
           />
         </div>
 
@@ -63,6 +67,10 @@ const Hub = () => {
           <HubItem
             label="Jogo da Velha"
             href="https://victor-spichenkoff.github.io/Jogo-da-Velha/"
+          />
+          <HubItem
+            label="Flappy Bird"
+            href="https://victor-spichenkoff.github.io/flappy-bird/"
           />
         </div>
       </div>
