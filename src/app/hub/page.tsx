@@ -72,6 +72,10 @@ const Hub = () => {
             label="Flappy Bird"
             href="https://victor-spichenkoff.github.io/flappy-bird/"
           />
+          <HubItem
+            label="z"
+            href="https://z-frontend-seven.vercel.app/home"
+          />
         </div>
       </div>
 
