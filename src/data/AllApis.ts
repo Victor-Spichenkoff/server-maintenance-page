@@ -32,8 +32,8 @@ export const allApis: IAllApis[] = [
     },
     {
         id: 5,
-        label: "OLX",
-        url: "https://sales-backend-nu.vercel.app/teste"
+        label: "Z",
+        url: "https://z-backend-t3zn.onrender.com/teste"
     }
 
 ]

@@ -15,9 +15,9 @@ export const selectablePoints: ISelectItem[] = [
     },
     {
         id: 2,
-        label: "Lista Compras",
+        label: "Z",
         selected: false,
-        endpoint: "lista"
+        endpoint: "z"
     },
     {
         id: 3,
