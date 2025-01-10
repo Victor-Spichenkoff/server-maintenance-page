@@ -13,17 +13,23 @@ export const selectablePoints: ISelectItem[] = [
         selected: false,
         endpoint: "vss"
     },
-    {
-        id: 2,
-        label: "Z",
-        selected: false,
-        endpoint: "z"
-    },
+    // {
+    //     id: 2,
+    //     label: "Lista Mercado",
+    //     selected: false,
+    //     endpoint: "lista"
+    // },
     {
         id: 3,
         label: "Paginação",
         selected: false,
         endpoint: "paginacao"
+    },
+    {
+        id: 4,
+        label: "Z",
+        selected: false,
+        endpoint: "z"
     },
     // {
     //     id: 3,

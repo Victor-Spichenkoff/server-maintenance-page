@@ -35,6 +35,7 @@ export const TestOne = ({ isAllEndpoints }: ITestOne) => {
          try {
             console.log(allApiItem?.url)
             if (isAllEndpoints && allApiItem) {
+               console.log(allApiItem.url)
                const res = await axios(allApiItem?.url, {
                   signal: controller.signal,
                   timeout: 10_000
@@ -74,7 +75,7 @@ export const TestOne = ({ isAllEndpoints }: ITestOne) => {
             return setErrorStatus("Excesso de tentativas atingido! (10)")
 
          try {
-            if(isAllEndpoints && allApiItem) {
+            if (isAllEndpoints && allApiItem) {
                const res = await axios(allApiItem?.url, {
                   timeout: 8_000,
                   signal: controller.signal
@@ -86,7 +87,7 @@ export const TestOne = ({ isAllEndpoints }: ITestOne) => {
                   timeout: 8_000,
                   signal: controller.signal
                })
-   
+
                setSuccessStatus(`Ligado\n` + res.data)
 
             }
@@ -107,7 +108,7 @@ export const TestOne = ({ isAllEndpoints }: ITestOne) => {
          }
 
 
-         currentTimeout = setTimeout(() => recursiveRequest(times, id,allApiItem), 10_000)
+         currentTimeout = setTimeout(() => recursiveRequest(times, id, allApiItem), 10_000)
       })
    }
 
@@ -213,14 +214,14 @@ export const TestOne = ({ isAllEndpoints }: ITestOne) => {
       </div>
 
       {!isAllEndpoints && (
-      <div>
-         <TestExtraActions
-            setErrorStatus={setErrorStatus}
-            setShowStatus={setShowStatus}
-            startTransition={startTransition}
-            setSuccessStatus={setSuccessStatus}
-         />
-      </div>
+         <div>
+            <TestExtraActions
+               setErrorStatus={setErrorStatus}
+               setShowStatus={setShowStatus}
+               startTransition={startTransition}
+               setSuccessStatus={setSuccessStatus}
+            />
+         </div>
 
       )}
    </>)

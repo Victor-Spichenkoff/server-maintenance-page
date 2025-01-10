@@ -2,9 +2,9 @@ import { baseUrl } from "@/global";
 import { IAllApis } from "@/types/allApis";
 
 
-
-
+//usando no hub
 export const allApis: IAllApis[] = [
+    //id serve para mostrar o cancelar corretamente
     {
         id: 0,
         label: "Portfolio",

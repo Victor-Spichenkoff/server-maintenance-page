@@ -25,6 +25,9 @@ export default function Manual() {
             <Alert>As api em &ldquo;/&rdquo; são verificadas usando o THIS. No Hub é separado do This</Alert>
 
 
+            <Alert>O tempo para o mês só é resetado (verificado) quando rodo um start</Alert>
+
+
 
             <ManualTitle text="Monitoramento do tempo" level="35" />
             <Topic><strong>Last Start</strong> - Última vez que iniciou</Topic>
