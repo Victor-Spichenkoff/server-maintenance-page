@@ -41,11 +41,10 @@ const Hub = () => {
             label="Weather"
             href="https://victor-spichenkoff.github.io/weather/"
           />
-                    <HubItem
-            label="Velha Online (R)"
-            href="https://tic-tac-toe-online-7kgi.onrender.com"
+          <HubItem
+            label="Velha Online"
+            href="https://tic-tac-toe-online-six.vercel.app/"
           />
-
         </div>
 
         <div className="flex flex-col flex-1 gap-y-3">
@@ -81,10 +80,6 @@ const Hub = () => {
             label="Z"
             href="https://z-frontend-seven.vercel.app/home"
           />
-          {/* <HubItem
-            label="Velha Online (V)"
-            href="https://tic-tac-toe-online-six.vercel.app/"
-          /> */}
         </div>
       </div>
 
