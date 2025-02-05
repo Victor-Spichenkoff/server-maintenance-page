@@ -1,6 +1,7 @@
 import { ActionButton } from "@/components/template/ActionButton"
 import { baseUrl } from "@/global"
 import axios from "axios"
+import { Router } from "lucide-react"
 import Link from "next/link"
 import { useState } from "react"
 
@@ -88,6 +89,9 @@ export const TestExtraActions =
 
             <Link href={"/hub"}>
                 <ActionButton
+                    onClick={()=> {
+                        setTimeout(()=> window.location.href = "/hub", 300)
+                    }}
                     label="HUB"
                     className="bg-transparent border-2 border-green-500/90 hover:bg-green-500"
                 />

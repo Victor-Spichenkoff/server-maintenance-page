@@ -34,6 +34,11 @@ export const allApis: IAllApis[] = [
         id: 5,
         label: "Z",
         url: "https://z-backend-t3zn.onrender.com/teste"
+    },
+    {
+        id: 6,
+        label: "Velha",
+        url: "https://tic-tac-toe-online-backend-jjv9.onrender.com/teste"
     }
 
 ]
