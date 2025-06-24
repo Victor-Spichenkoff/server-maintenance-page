@@ -55,26 +55,26 @@ export const QuickSettings = () => {
     startTransition(async () => {
       try {
         const res = await axios(`${baseUrl}/callAllOnce`, { timeout: 50_000 })
-  
+
         console.log(res.data)
-  
+
         if (res.data.isAllWorking)
           return setSuccessStatus(`Tudo funcionando \n${res.data.working} de ${res.data.total}`)
         //nem todos
-  
+
         const notWorkingNames = res.data.errors.join(", ")
-  
+
         return setErrorStatus(`ERRO:
                   ${res.data.working} de ${res.data.total}
                   Errados: ${notWorkingNames}`)
-  
+
       } catch (e) {
         console.log(e)
         const error = e as AxiosError
-  
+
         if (error.code === 'ECONNABORTED')
           return setErrorStatus("Demorou Muito")
-  
+
         setErrorStatus("Erro na requisição")
       }
     })
@@ -86,8 +86,8 @@ export const QuickSettings = () => {
       <div className="flex">
 
         <div className="w-full flex flex-col items gap-y-2 flex-[1]">
-          <ActionButton label="Chamar API" onClick={callApiOnce} />
-          <ActionButton label="Chamar Todos" onClick={allOnce} />
+          <ActionButton label="Call API" onClick={callApiOnce} />
+          <ActionButton label="Call All" onClick={allOnce} />
           <ForceAll
             setSuccessStatus={setSuccessStatus}
             setErrorStatus={setErrorStatus}

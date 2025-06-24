@@ -36,9 +36,9 @@ export const SettingsToggleArea = ({ setForceUpdate, forceUpdate }: ISettingsAre
                 else
                     setIsApiOn(false)
 
-                ShowMessage("Mudado com Sucesso", 'success', toast)
+                ShowMessage("Successfully Changed", 'success', toast)
             } catch {
-                ShowMessage("Erro ao mudar API", 'error', toast)
+                ShowMessage("Can't change API", 'error', toast)
             }
         })
     }
@@ -70,7 +70,7 @@ export const SettingsToggleArea = ({ setForceUpdate, forceUpdate }: ISettingsAre
 
         </div>
         <div className="mt-12 w-full">
-            <h2 className="text-2xl text-center">Ações</h2>
+            <h2 className="text-2xl text-center">Actions</h2>
             <div className="w-full flex mt-5">
                 <QuickSettings />
             </div>

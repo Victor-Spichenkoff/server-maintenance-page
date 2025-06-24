@@ -21,7 +21,7 @@ export const selectablePoints: ISelectItem[] = [
     // },
     {
         id: 3,
-        label: "Paginação",
+        label: "Pagination",
         selected: false,
         endpoint: "paginacao"
     },
@@ -33,7 +33,7 @@ export const selectablePoints: ISelectItem[] = [
     },
     {
         id: 5,
-        label: "Velha",
+        label: "Tic Tac",
         selected: false,
         endpoint: "velha"
     },

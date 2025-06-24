@@ -45,7 +45,7 @@ export const TimeMonitoringArea = () => {
         <div className="mt-24 mb-40 w-full text-center">
             <Loading isLoading={isLoading} />
             <div className="flex justify-center relative">
-                <h2 className="text-2xl text-center">Tempos</h2>
+                <h2 className="text-2xl text-center">Time Monitoring</h2>
                 <div
                     onClick={getInfos}
                     className="absolute right-8"
@@ -76,7 +76,7 @@ export const TimeMonitoringArea = () => {
                         remaningMinutes={times.main.minutes}
                         title="Main"
                     />
-                    <CircleGraphic 
+                    <CircleGraphic
                         className="border-r border-gray-500"
                         remaningHours={times.this.hours}
                         remaningMinutes={times.this.minutes}
@@ -92,7 +92,7 @@ export const TimeMonitoringArea = () => {
                 <div className="mt-24 text-highlight">SEM DADOS</div>
             )}
             {!times && isError && (
-                <div className="mt-24 text-error">ERRO ao pegar os Dados</div>
+                <div className="mt-24 text-error">ERRO: Can&apos;t get data</div>
             )}
 
 

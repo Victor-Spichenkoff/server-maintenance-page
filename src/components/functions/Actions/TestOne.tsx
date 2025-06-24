@@ -13,7 +13,7 @@ interface ITestOne {
    isAllEndpoints?: boolean
 }
 
-var currentTimeout: any
+let currentTimeout: any
 
 export const TestOne = ({ isAllEndpoints }: ITestOne) => {
    const [successStatus, setSuccessStatus] = useState("")
@@ -40,6 +40,7 @@ export const TestOne = ({ isAllEndpoints }: ITestOne) => {
                   signal: controller.signal,
                   timeout: 10_000
                })
+               console.log(res)
 
                setSuccessStatus("Funcionando: " + allApiItem.label)
             } else {
@@ -194,7 +195,7 @@ export const TestOne = ({ isAllEndpoints }: ITestOne) => {
 
 
    return (<>
-      <h2 className="text-2xl text-center mt-8 mb-4">Testar Um</h2>
+      <h2 className="text-2xl text-center mt-8 mb-4">Test one</h2>
       <ToggleItem
          onCheckChange={handleForceChange}
          label="Force"

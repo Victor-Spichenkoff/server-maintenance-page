@@ -82,7 +82,7 @@ export const TestExtraActions =
 
 
             <ActionButton
-                label={isThisLoading ? "Cancelar" : "Forçar THIS"}
+                label={isThisLoading ? "Cancel" : "Force THIS"}
                 className={isThisLoading ? "bg-error hover:bg-[#8d0b0b]" : ""}
                 onClick={isThisLoading ? handleCancell : handleStartClick}
             />

@@ -74,7 +74,7 @@ export const ForceAll = ({ setSuccessStatus, setErrorStatus, setShowStatus, star
 
     return (
         <ActionButton
-            label={ isCalling ? "Cancelar" : "Forçar Todos" }
+            label={ isCalling ? "Cancel" : "Force All" }
             onClick={isCalling ? handleCancell : handleForceAllClick}
             className={isCalling ? "bg-error hover:bg-[#960404]" : "" }
         />

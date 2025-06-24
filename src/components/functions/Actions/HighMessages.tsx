@@ -21,9 +21,9 @@ export const HighMessages = () => {
             try {
                 const res = await axios(`${baseUrl}/hightMenssages/toggle`)
                 setIsOn(res.data)
-                ShowMessage("Mudado High Message", "success", toast)
+                ShowMessage("Changing High Message", "success", toast)
             } catch {
-                ShowMessage("ERROR: Mudar High Messages", "error", toast)
+                ShowMessage("ERROR: Can't Change High Messages", "error", toast)
             }
         })
     }
@@ -41,7 +41,7 @@ export const HighMessages = () => {
                 isChecked={isOn}
                 onCheckChange={handleClick}
             />
-            <Toaster /> 
+            <Toaster />
             <Loading isLoading={isLoading} />
         </div>
     )

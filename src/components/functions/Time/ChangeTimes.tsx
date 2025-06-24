@@ -60,14 +60,14 @@ export const ChangeTime = () => {
             <div className="gap-y-2 flex flex-col items-center">
                 <Input
                     type="number"
-                    placeholder="horas"
+                    placeholder="hours"
                     value={hours}
                     onChange={(e) => setHours(e.target.value)}
                     className="w-[200px] bg-white/90 text-gray-700 text-center"
                 />
                 <Input
                     type="number"
-                    placeholder="minutos"
+                    placeholder="minutes"
                     value={minutes}
                     onChange={(e) => setMinutes(e.target.value)}
                     className="w-[200px] bg-white/90 text-gray-700 text-center"
@@ -98,7 +98,7 @@ export const ChangeTime = () => {
 
 
                 <ActionButton
-                    label="Enviar"
+                    label="Send"
                     onClick={handleChangeClick}
                     className="bg-green-500/90 hover:bg-green-700"
                 />

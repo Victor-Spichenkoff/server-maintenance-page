@@ -12,7 +12,7 @@ export const allApis: IAllApis[] = [
     },
     {
         id: 1,
-        label: "VSS Artigos",
+        label: "VSS Articles",
         url: "https://vss-artigos-backend.onrender.com/teste"
     },
     {
@@ -22,7 +22,7 @@ export const allApis: IAllApis[] = [
     },
     {
         id: 3,
-        label: "Lista Mercado",
+        label: "Market List",
         url: "https://lista-mercado-api.onrender.com/teste"
     },
     {
@@ -37,7 +37,7 @@ export const allApis: IAllApis[] = [
     },
     {
         id: 6,
-        label: "Velha",
+        label: "Tic Tac",
         url: "https://tic-tac-toe-online-backend-jjv9.onrender.com/teste"
     }
 

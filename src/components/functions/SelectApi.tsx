@@ -75,7 +75,7 @@ export const SelectApi = ({ setForceUpdate, forceUpdate }: ISelectApi) => {
       <DropdownMenu modal={false}>
         <DropdownMenuTrigger asChild>
           <div>
-            <ActionButton label="Selecionar" />
+            <ActionButton label="Select" />
           </div>
         </DropdownMenuTrigger>
 
