@@ -25,14 +25,27 @@ export const Status = ({ update }: IStatus) => {
         })
     }, [update])
 
+    let finalStatus = status
 
+    switch (status) {
+        case "Nenhum Selecionado":
+            finalStatus = "Nothing Selected"; break;
+        case "Paginação":
+            finalStatus = "Pagination"; break;
+        case "Velha":
+            finalStatus = "Tic Tac Toe"; break;
+        default:
+            break
+    }
+
+    /*TRANSLATE → Nenhum selecionado == depende do backend:*/
     return (
         <div
             className={` text-slate-100 border border-gold min-w-[280px] text-center px-4 py-2 rounded-xl text-2xl
-            ${status != "Nothing Selected" && "bg-gold text-gray-900"}
+                ${finalStatus != "Nothing Selected" && "bg-gold text-gray-900"}
             ${isError && 'border-error bg-transparent text-error'}
         `}>
-            {!isLoading && status}
+            {!isLoading && finalStatus}
             {isLoading && "Loading..."}
         </div>
     )

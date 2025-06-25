@@ -17,12 +17,12 @@ export const ChangeTime = () => {
         setSuccessMessage("")
 
         if (hours < 0 || hours > 750 || minutes < 0 || minutes > 60)
-            throw "Valor fora do limite"
+            throw "Value out of bounds"
             // throw setErroMessage("Valor fora do limite")
 
 
         if (hours % 1 != 0)
-            throw "Não deve ter vírgula"
+            throw "No comma"
     }
 
 
@@ -109,7 +109,7 @@ export const ChangeTime = () => {
                 <div className={`min-w-40 w-fit h-12 self-center rounded-md shadow-md flex justify-center items-center mt-8 mx-auto
                 bg-highlight/40 border border-highlight text-blue-400
                 `}>
-                    Carregando...
+                    Loading...
                 </div>
             )}
 

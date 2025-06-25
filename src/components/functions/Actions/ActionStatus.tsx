@@ -9,9 +9,9 @@ export const ActionStatus = ({ isLoading, showStatus, errorStatus, successStatus
     if (isLoading)
         return (
             <div className="flex flex-[2] justify-center items-center
-                  border border-gray-blue ml-8 
+                  border border-gray-blue ml-8
                   rounded-md">
-                Carregando...
+                Loading...
             </div>)
 
     if (!showStatus)

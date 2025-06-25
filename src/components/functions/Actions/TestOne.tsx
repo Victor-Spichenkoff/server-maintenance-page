@@ -42,22 +42,22 @@ export const TestOne = ({ isAllEndpoints }: ITestOne) => {
                })
                console.log(res)
 
-               setSuccessStatus("Funcionando: " + allApiItem.label)
+               setSuccessStatus("Woking: " + allApiItem.label)
             } else {
                const res = await axios(`${baseUrl}/test/one/${id}`, {
                   signal: controller.signal,
                   timeout: 10_000
                })
 
-               setSuccessStatus("Funcionando \n" + res.data)
+               setSuccessStatus("Woking \n" + res.data)
             }
          } catch (e: any) {
             if (callingId >= 0)
-               setErrorStatus("Não Funcionou")
+               setErrorStatus("Doesn't work")
             else if (e.status == 500)
-               setErrorStatus("Erro de Timeout")
+               setErrorStatus("Timeout Error")
             else
-               setErrorStatus("Erro inesperado")
+               setErrorStatus("Unexpected error")
          }
 
          setCallingId(-1)
@@ -73,7 +73,7 @@ export const TestOne = ({ isAllEndpoints }: ITestOne) => {
          times += 1
 
          if (times > 10)
-            return setErrorStatus("Excesso de tentativas atingido! (10)")
+            return setErrorStatus("Limit of attempts reached! (10)")
 
          try {
             if (isAllEndpoints && allApiItem) {
@@ -82,7 +82,7 @@ export const TestOne = ({ isAllEndpoints }: ITestOne) => {
                   signal: controller.signal
                })
 
-               setSuccessStatus("Funcionando: " + allApiItem.label)
+               setSuccessStatus("Working: " + allApiItem.label)
             } else {
                const res = await axios(`${baseUrl}/test/one/${id}`, {
                   timeout: 8_000,
@@ -141,7 +141,7 @@ export const TestOne = ({ isAllEndpoints }: ITestOne) => {
       setSuccessStatus("")
       setCallingId(-1)
 
-      setTimeout(() => setErrorStatus(`CANCELADO`), 20)
+      setTimeout(() => setErrorStatus(`CANCELLED`), 20)
    }
 
 
@@ -157,7 +157,7 @@ export const TestOne = ({ isAllEndpoints }: ITestOne) => {
 
          return (
             <ActionButton
-               label={callingId == api.id ? "Cancelar" : api.label}
+               label={callingId == api.id ? "Cancel" : api.label}
                className={callingId == api.id ? "bg-error hover:bg-[#8d0b0b]" : ""}
                onClick={() => {
                   if (callingId == api.id)
@@ -176,7 +176,7 @@ export const TestOne = ({ isAllEndpoints }: ITestOne) => {
       allButtons = allApis.map((allApiItem, i) => {
          return (
             <ActionButton
-               label={callingId == allApiItem.id ? "Cancelar" : allApiItem.label}
+               label={callingId == allApiItem.id ? "Cancel" : allApiItem.label}
                className={callingId == allApiItem.id ? "bg-error hover:bg-[#8d0b0b]" : ""}
                onClick={() => {
                   if (callingId == allApiItem.id)

@@ -11,8 +11,8 @@ interface IActionButton {
 
 export const ActionButton = ({ label, onClick, disabled, className }: IActionButton) => {
     return (
-        <Button onClick={onClick} 
-            className={cn("bg-highlight hover:bg-[#0a52a5] shadow-md", className)} 
+        <Button onClick={onClick}
+            className={cn("bg-highlight hover:bg-[#0a52a5] shadow-md", className)}
             disabled={disabled}
         >
             { label }

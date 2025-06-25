@@ -89,7 +89,7 @@ export const TimeMonitoringArea = () => {
             </>)}
 
             {!times && !isError && (
-                <div className="mt-24 text-highlight">SEM DADOS</div>
+                <div className="mt-24 text-highlight">NO DATA</div>
             )}
             {!times && isError && (
                 <div className="mt-24 text-error">ERRO: Can&apos;t get data</div>
