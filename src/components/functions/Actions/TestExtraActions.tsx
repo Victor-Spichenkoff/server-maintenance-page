@@ -43,17 +43,17 @@ export const TestExtraActions =
                 })
 
                 setIsThisLoading(false)
-                setSuccessStatus(`Ligado`)
+                setSuccessStatus(`ON`)
                 clearTimeout(currentTimeout)
                 return
             } catch (e: any) {
                 if (e.code === 'ECONNABORTED' || e.status == 500)
-                    setErrorStatus(`Erro: 
-                        tentativa: ${times}/10
-                        Espere 8 segundos...
+                    setErrorStatus(`Error: 
+                        Attempts: ${times}/10
+                        Wait 8 seconds...
                         `)
                 else
-                    setErrorStatus("Erro no request!")
+                    setErrorStatus("Request error!")
             }
 
 

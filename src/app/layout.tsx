@@ -1,5 +1,5 @@
 import type { Metadata } from "next"
-import { Inter } from "next/font/google"
+import { Inter, Roboto } from "next/font/google"
 import "./globals.css"
 import { cn } from "@/lib/utils"
 import { NextUiProvider } from "@/providers/next-ui"
@@ -7,6 +7,7 @@ import { NextUiProvider } from "@/providers/next-ui"
 import { ToastContainer } from 'react-toastify';
 
 const inter = Inter({ subsets: ["latin"] })
+const roboto = Roboto({ subsets: ["latin"], weight: ["400", "700", "900"] })
 
 export const metadata: Metadata = {
   title: "Server Maintenance",
@@ -26,8 +27,9 @@ export default function RootLayout({
         <link rel="apple-touch-icon" href="/logo.png" />
         <meta name="theme-color" content="#111C2E2e" />
       </head>
-      <body className={cn(inter.className,
-        "bg-main text-gray-200  min-h-screen mx-auto relative overflow-x-hidden")}>
+      <body className={cn(inter.className, roboto.className,
+        "bg-main text-gray-200  min-h-screen mx-auto relative overflow-x-hidden" +
+          " font-roboto")}>
         <NextUiProvider>
           <ToastContainer />
           {children}

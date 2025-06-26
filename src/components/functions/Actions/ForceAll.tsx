@@ -39,9 +39,9 @@ export const ForceAll = ({ setSuccessStatus, setErrorStatus, setShowStatus, star
                 }
 
 
-                setErrorStatus(`Erro: 
-                tentativa: ${times}/10
-                Espere 10 segundos...
+                setErrorStatus(`Error: 
+                Attempts: ${times}/10
+                Wait 10 seconds...
                 `)
             } catch (e: any) {
                 if (e.code === 'ECONNABORTED')
@@ -49,7 +49,6 @@ export const ForceAll = ({ setSuccessStatus, setErrorStatus, setShowStatus, star
                 else
                     setErrorStatus("Erro no request!")
             }
-
 
             currentTimeout = setTimeout(() => recursiveRequest(times), 10_000)
         })
@@ -69,7 +68,7 @@ export const ForceAll = ({ setSuccessStatus, setErrorStatus, setShowStatus, star
 
         clearTimeout(currentTimeout)
 
-        setErrorStatus(`CANCELADO`)
+        setErrorStatus(`CANCELLED`)
     }
 
     return (

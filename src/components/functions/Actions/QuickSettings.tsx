@@ -40,8 +40,8 @@ export const QuickSettings = () => {
         setErrorStatus(res.error)
 
       if (res.error) {
-        setErrorStatus("Erro inesperado!")
-        console.log("Erro ao chamar a api 1 vez")
+        setErrorStatus("Unexpected error!")
+        console.log("Error calling api once")
       }
 
       setShowStatus(true)
@@ -59,14 +59,14 @@ export const QuickSettings = () => {
         console.log(res.data)
 
         if (res.data.isAllWorking)
-          return setSuccessStatus(`Tudo funcionando \n${res.data.working} de ${res.data.total}`)
+          return setSuccessStatus(`Everithing is working \n${res.data.working} of ${res.data.total}`)
         //nem todos
 
         const notWorkingNames = res.data.errors.join(", ")
 
         return setErrorStatus(`ERRO:
-                  ${res.data.working} de ${res.data.total}
-                  Errados: ${notWorkingNames}`)
+                  ${res.data.working} of ${res.data.total}
+                  Wrong: ${notWorkingNames}`)
 
       } catch (e) {
         console.log(e)

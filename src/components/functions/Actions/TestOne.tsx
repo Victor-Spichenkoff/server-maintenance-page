@@ -98,11 +98,11 @@ export const TestOne = ({ isAllEndpoints }: ITestOne) => {
          } catch (e: any) {
 
             if (e.code === 'ECONNABORTED')
-               setErrorStatus("Demorou Muito")
+               setErrorStatus("Took too long")
             else if (e.status == 500)
-               setErrorStatus(`Erro: 
-                        tentativa: ${times}/10
-                        Espere 8 segundos...
+               setErrorStatus(`Error: 
+                        attempts: ${times}/10
+                        wait 8 seconds...
                         `)
             else
                setErrorStatus("Erro no request!")
