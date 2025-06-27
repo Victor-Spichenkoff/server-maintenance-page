@@ -22,7 +22,7 @@ const config: Config = {
   			sm: 'calc(var(--radius) - 4px)'
   		},
   		colors: {
-			"main": "#111C2E",
+			"main": "var(--bg-main)",
 			"highlight": "#0764D0",
 			// "gray-blue": "#465F87",//original
 			sucess: "#0DB914",
@@ -31,7 +31,7 @@ const config: Config = {
 			// error: "#D10303",//original
 			"hight-border": "#2E4B75",
 			"gray-blue": "#1A2740",
-		  
+
   			background: 'hsl(var(--background))',
   			foreground: 'hsl(var(--foreground))',
   			card: {

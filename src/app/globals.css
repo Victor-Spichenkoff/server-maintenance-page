@@ -6,6 +6,7 @@
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255;
+  --bg-main: #111C2E;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -86,12 +87,12 @@
 }
 
 ::-webkit-scrollbar-track {
-  background: rgb(29, 78, 226) !important;
+  background: var(--bg-main) !important;
 }
 
 /* barra mesmo */
 ::-webkit-scrollbar-thumb {
-  background-color: rgba(0, 0, 0, 0.836);
+  background-color: rgb(29, 78, 226);
   border-radius: 20px 0 0 20px ;
 }
 
