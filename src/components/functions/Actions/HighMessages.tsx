@@ -31,13 +31,13 @@ export const HighMessages = () => {
     useEffect(() => {
         axios(`${baseUrl}/hightMenssages/status`)
             .then(res => setIsOn(res.data))
-            .catch(res => ShowMessage("ERROR: High Messages", "error", toast))
+            .catch(res => ShowMessage("ERROR: Frequent Messages", "error", toast))
     }, [])
 
     return (
         <div className="mb-6">
             <ToggleItem
-                label="High Messages"
+                label="Frequent Messages"
                 isChecked={isOn}
                 onCheckChange={handleClick}
             />

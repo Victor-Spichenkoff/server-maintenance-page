@@ -9,7 +9,7 @@ import Link from "next/link"
 const Hub = () => {
   return (
     <div className={`max-w-[416px] flex-col items-center min-h-screen mx-auto relative flex justify-center`}>
-      <h1 className="text-3xl text-center mt-8">More of me</h1>
+      <h1 className="text-3xl text-center mt-8">All Projects</h1>
 
       <div className="w-[80%] flex justify-center gap-y-3 gap-x-2 mt-8">
         <div className="flex flex-col flex-1 gap-y-3">
