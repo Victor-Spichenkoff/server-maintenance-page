@@ -37,7 +37,7 @@ export const SelectApi = ({ setForceUpdate, forceUpdate }: ISelectApi) => {
   const changeCurrentOn = async (endpoint: string, currentState: boolean) => {
     setForceUpdate(Math.random())//para recarregar o status de longe
     if (process.env.NODE_ENV == "production")//lidar com o lag maior
-      setTimeout(() => setForceUpdate(Math.random()), 3000)
+      setTimeout(() => setForceUpdate(Math.random()), 4000)
 
     if (currentState) {
       try {

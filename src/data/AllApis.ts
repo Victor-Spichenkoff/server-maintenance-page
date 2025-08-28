@@ -39,6 +39,11 @@ export const allApis: IAllApis[] = [
         id: 6,
         label: "Tic Tac",
         url: "https://tic-tac-toe-online-backend-jjv9.onrender.com/teste"
-    }
+    },
 
+    {
+        id: 7,
+        label: "Million",
+        url: "https://million-show-api.onrender.com/teste"//TODO: IS THIS THE REAL ENDPOINT OF MILLION SHOW API?
+    }
 ]

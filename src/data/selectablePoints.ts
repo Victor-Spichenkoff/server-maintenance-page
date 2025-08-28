@@ -37,6 +37,12 @@ export const selectablePoints: ISelectItem[] = [
         selected: false,
         endpoint: "velha"
     },
+    {
+        id: 6,
+        label: "Million",
+        selected: false,
+        endpoint: "million"
+    },
     // {
     //     id: 3,
     //     label: "OLX",
