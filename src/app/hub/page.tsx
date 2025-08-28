@@ -80,6 +80,11 @@ const Hub = () => {
             label="Z"
             href="https://z-frontend-seven.vercel.app/home"
           />
+
+        <HubItem
+            label="Million"
+            href="https://million-show.vercel.app"
+          />
         </div>
       </div>
 
