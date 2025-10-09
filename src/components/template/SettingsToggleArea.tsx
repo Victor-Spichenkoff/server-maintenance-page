@@ -54,8 +54,6 @@ export const SettingsToggleArea = ({ setForceUpdate, forceUpdate }: ISettingsAre
         <Loading isLoading={isLoading} />
         <Toaster />
         <div className="self-start mt-12 flex items-center justify-between w-full">
-
-
             <SelectApi
                 setForceUpdate={setForceUpdate}
                 forceUpdate={forceUpdate}

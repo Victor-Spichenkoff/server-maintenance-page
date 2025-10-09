@@ -10,10 +10,10 @@ interface IStatus {
 export const Status = ({ update }: IStatus) => {
     const [status, setStatus] = useState("")
     const [isError, setIsError] = useState(false)
-    const [ isLoading, startTrantiotion ] = useTransition()
+    const [ isLoading, startTransition ] = useTransition()
 
     useEffect(()=> {
-        startTrantiotion(async ()=> {
+        startTransition(async ()=> {
             try{
                 const res = await axios(`${baseUrl}/currenton`)
                 setIsError(false)
