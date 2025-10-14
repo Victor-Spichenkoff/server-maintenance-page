@@ -61,12 +61,12 @@ export const TimeMonitoringArea = () => {
                     <div className="flex items-center gap-2">
                         <span className="text-green-400">🕒</span>
                         <span className="font-semibold">Start:</span>
-                        <span>{times.lastStart ?? "Não iniciado"}</span>
+                        <span>{times.lastStart ?? "Not started yet"}</span>
                     </div>
                     <div className="flex items-center gap-2 mt-3">
                         <span className="text-red-400">🔻</span>
                         <span className="font-semibold">Last Discount:</span>
-                        <span>{times.lastDiscount ?? "Não feito"}</span>
+                        <span>{times.lastDiscount ?? "Undone"}</span>
                     </div>
                 </div>
 
