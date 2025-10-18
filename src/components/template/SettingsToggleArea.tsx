@@ -46,7 +46,7 @@ export const SettingsToggleArea = ({ setForceUpdate, forceUpdate }: ISettingsAre
     useEffect(() => {
         axios(`${baseUrl}/apiStatus`)
             .then(res => setIsApiOn(res.data))
-            .catch(res => setIsApiOn(false))
+            .catch(_ => setIsApiOn(false))
     }, [forceUpdate])
 
 
@@ -55,6 +55,7 @@ export const SettingsToggleArea = ({ setForceUpdate, forceUpdate }: ISettingsAre
         <Toaster />
         <div className="self-start mt-12 flex items-center justify-between w-full">
             <SelectApi
+                startTransition={startTransition}
                 setForceUpdate={setForceUpdate}
                 forceUpdate={forceUpdate}
             />
