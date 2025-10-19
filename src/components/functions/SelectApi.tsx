@@ -2,9 +2,6 @@ import {ActionButton} from "../template/ActionButton"
 import {
     DropdownMenu,
     DropdownMenuContent,
-    DropdownMenuItem,
-    DropdownMenuLabel,
-    DropdownMenuSeparator,
     DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 import {ToggleItem} from "../utils/ToggleItem"
@@ -36,10 +33,8 @@ export const SelectApi = ({setForceUpdate, forceUpdate, startTransition}: ISelec
 
 
     const changeCurrentOn = async (endpoint: string, currentState: boolean) => {
-
-        //TODO: IS WORKING WITHOUT THIS?
-        // if (process.env.NODE_ENV == "production")//lidar com o lag maior
-        //     setTimeout(() => setForceUpdate(Math.random()), 4000)
+        if (process.env.NODE_ENV != "development")//lidar com o lag maior
+            setTimeout(() => setForceUpdate(Math.random()), 4000)
 
         if (currentState) {
             try {

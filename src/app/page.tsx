@@ -3,8 +3,6 @@
 import {Footer} from "@/components/template/Footer"
 import {Header} from "@/components/template/Header"
 import {SettingsArea} from "@/components/template/SettingsArea"
-import {BackendConnectionTest} from "@/components/utils/BackendConnectionTest";
-import {useEffect} from "react";
 
 export default function Home() {
     const useBorder = false//process.env.NODE_ENV == "development" ? "md:border border-black" : ""
