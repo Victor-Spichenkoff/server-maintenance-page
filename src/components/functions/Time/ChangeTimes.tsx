@@ -38,7 +38,7 @@ export const ChangeTime = () => {
                     minutes
                 })
 
-                setSuccessMessage("Mudado")
+                setSuccessMessage("Changed")
             } catch(e) {
                 console.log(e)
                 if(typeof e == "string")
