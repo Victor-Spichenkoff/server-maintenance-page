@@ -44,20 +44,14 @@ export const selectablePoints: ISelectItem[] = [
         selected: false,
         endpoint: "million"
     },
-    // {
-    //     id: 3,
-    //     label: "OLX",
-    //     selected: false,
-    //     endpoint: "olx"
-    // },
     {
-        id: 17,
+        id: 1717,
         label: "All",
         selected: false,
         endpoint: "all"
     },
     {
-        id: -1,
+        id: 9999,
         label: "OFF",
         selected: false,
         endpoint: "turnoff"

@@ -31,15 +31,15 @@ export const SelectApi = ({setForceUpdate, forceUpdate, startTransition}: ISelec
     }, [forceUpdate])
 
 
-    const changeCurrentOn = async (id: number, currentState: boolean) => {
+    const changeCurrentOn = async (id: string | number, currentState: boolean) => {
         if (process.env.NODE_ENV != "development")//lidar com o lag maior
             setTimeout(() => setForceUpdate(Math.random()), 4000)
 
         if (currentState) {
             try {
                 startTransition(async () => {
-                    await axios(`${baseUrl}/turnoff`)
-                    setCurrentOnIndex(-1)
+                    await axios(`${baseUrl}/set/turnoff`)
+                    setCurrentOnIndex(9999)
                 })
             } catch {
                 console.log("Erro ao setar para OFF")
@@ -65,7 +65,7 @@ export const SelectApi = ({setForceUpdate, forceUpdate, startTransition}: ISelec
             key={i}
             label={item.label}
             isChecked={item.id == currentOnIndex}
-            onCheckChange={() => changeCurrentOn(item.id??100, (item.id == currentOnIndex))}
+            onCheckChange={() => changeCurrentOn(item.id??-1, (item.id == currentOnIndex))}
         />
     ))
 
