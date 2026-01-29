@@ -2,7 +2,7 @@ import { baseUrl } from "@/global";
 import { IAllApis } from "@/types/allApis";
 
 
-//usando no hub
+//used on hub, nothing related to "this" API
 export const allApis: IAllApis[] = [
     //id serve para mostrar o cancelar corretamente
     {

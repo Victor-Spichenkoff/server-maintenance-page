@@ -9,7 +9,6 @@ import {selectablePoints} from "@/data/selectablePoints"
 import {TransitionStartFunction, useEffect, useState, useTransition} from "react"
 import axios from "axios"
 import {baseUrl} from "@/global"
-import {Loading} from "@/components/utils/Loading";
 
 
 interface ISelectApi {
@@ -32,7 +31,7 @@ export const SelectApi = ({setForceUpdate, forceUpdate, startTransition}: ISelec
     }, [forceUpdate])
 
 
-    const changeCurrentOn = async (endpoint: string, currentState: boolean) => {
+    const changeCurrentOn = async (id: number, currentState: boolean) => {
         if (process.env.NODE_ENV != "development")//lidar com o lag maior
             setTimeout(() => setForceUpdate(Math.random()), 4000)
 
@@ -50,7 +49,7 @@ export const SelectApi = ({setForceUpdate, forceUpdate, startTransition}: ISelec
 
         try {
             startTransition(async () => {
-                await axios(`${baseUrl}/${endpoint}`)
+                await axios(`${baseUrl}/set/${id}`)
                 const newCurrentOnId = await axios(`${baseUrl}/currenton/id`)
                 setCurrentOnIndex(newCurrentOnId.data)
                 setForceUpdate(Math.random())//para recarregar o status de longe
@@ -66,7 +65,7 @@ export const SelectApi = ({setForceUpdate, forceUpdate, startTransition}: ISelec
             key={i}
             label={item.label}
             isChecked={item.id == currentOnIndex}
-            onCheckChange={() => changeCurrentOn(item.endpoint, (item.id == currentOnIndex))}
+            onCheckChange={() => changeCurrentOn(item.id??100, (item.id == currentOnIndex))}
         />
     ))
 

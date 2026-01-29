@@ -1,5 +1,6 @@
 import { ISelectItem } from "@/types/selectItem";
 
+// usado na home
 export const selectablePoints: ISelectItem[] = [
     {
         id: 0,
