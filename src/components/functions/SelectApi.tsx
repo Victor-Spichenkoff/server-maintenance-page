@@ -9,6 +9,7 @@ import {selectablePoints} from "@/data/selectablePoints"
 import {TransitionStartFunction, useEffect, useState, useTransition} from "react"
 import axios from "axios"
 import {baseUrl} from "@/global"
+import {ApiOperationsIds} from "@/data/_db_api_typing_and_values";
 
 
 interface ISelectApi {
@@ -39,7 +40,7 @@ export const SelectApi = ({setForceUpdate, forceUpdate, startTransition}: ISelec
             try {
                 startTransition(async () => {
                     await axios(`${baseUrl}/set/turnoff`)
-                    setCurrentOnIndex(9999)
+                    setCurrentOnIndex(ApiOperationsIds.nothing)
                 })
             } catch {
                 console.log("Erro ao setar para OFF")

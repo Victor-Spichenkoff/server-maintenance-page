@@ -1,29 +1,30 @@
 import { baseUrl } from "@/global";
 import { IAllApis } from "@/types/allApis";
+import {ApiUrls} from "@/data/_db_api_typing_and_values";
 
-
+const testEndpoint = "/teste"
 //used on hub, nothing related to "this" API
 export const allApis: IAllApis[] = [
-    //id serve para mostrar o cancelar corretamente
+    //id is used for cancel properly
     {
         id: 0,
         label: "Portfolio",
-        url: "https://portfolio-api-i3t0.onrender.com/teste"
+        url: ApiUrls.portfolios + testEndpoint// all endpoints must be with their test endpoints
     },
     {
         id: 1,
         label: "VSS Articles",
-        url: "https://vss-artigos-backend.onrender.com/teste"
+        url: ApiUrls.articles + testEndpoint
     },
     {
         id: 2,
         label: "Pagination",
-        url: "https://pagination-api-ugwo.onrender.com/teste"
+        url: ApiUrls.pagination + testEndpoint
     },
     {
         id: 3,
         label: "Market List",
-        url: "https://lista-mercado-api.onrender.com/teste"
+        url: ApiUrls.shoppingList + testEndpoint
     },
     {
         id: 4,
@@ -33,17 +34,17 @@ export const allApis: IAllApis[] = [
     {
         id: 5,
         label: "Z",
-        url: "https://z-backend-t3zn.onrender.com/teste"
+        url: ApiUrls.z + testEndpoint
     },
     {
         id: 6,
         label: "Tic Tac",
-        url: "https://tic-tac-toe-online-backend-jjv9.onrender.com/teste"
+        url: ApiUrls.ticTacToe + testEndpoint
     },
 
     {
         id: 7,
         label: "Million",
-        url: "https://million-show-api.onrender.com/teste"//TODO: IS THIS THE REAL ENDPOINT OF MILLION SHOW API?
+        url: ApiUrls.million + testEndpoint
     }
 ]
