@@ -19,7 +19,7 @@ export const HighMessages = () => {
     const handleClick = () => {
         startTransition(async () => {
             try {
-                const res = await axios(`${baseUrl}/hightMenssages/toggle`)
+                const res = await axios(`${baseUrl}/highMessages/toggle`)
                 setIsOn(res.data)
                 ShowMessage("Changing High Message", "success", toast)
             } catch {
@@ -29,7 +29,7 @@ export const HighMessages = () => {
     }
 
     useEffect(() => {
-        axios(`${baseUrl}/hightMenssages/status`)
+        axios(`${baseUrl}/highMessages/status`)
             .then(res => setIsOn(res.data))
             .catch(res => ShowMessage("ERROR: Frequent Messages", "error", toast))
     }, [])

@@ -25,11 +25,11 @@ const config: Config = {
 			"main": "var(--bg-main)",
 			"highlight": "#0764D0",
 			// "gray-blue": "#465F87",//original
-			sucess: "#0DB914",
+			success: "#0DB914",
 			error: "#FF4444",
 			gold: "#CFA34B",
 			// error: "#D10303",//original
-			"hight-border": "#2E4B75",
+			"high-border": "#2E4B75",
 			"gray-blue": "#1A2740",
 
   			background: 'hsl(var(--background))',

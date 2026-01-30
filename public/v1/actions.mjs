@@ -26,11 +26,11 @@ async function carregarStatus() {
         const res = await axios.get(url+'/currenton')
         const msg = res.data
         console.log('try: ' + res)
-    
+
         status.innerText = msg
-    
+
         return msg
-    } catch(e) { 
+    } catch(e) {
         status.innerHTML = 'Não foi obtida resposta'
         console.log('Erro no statusGetter: '+  e)
         return false
@@ -40,7 +40,7 @@ async function carregarStatus() {
         // }, 3000)
         // if(tentativas > 10) return false//não deu mesmo
      }
-} 
+}
 
 
 async function testar(dois = false) {
@@ -52,7 +52,7 @@ async function testar(dois = false) {
     img.src = loadGif
 
     resposta.appendChild(img)
-    
+
     var sec = 0
     const tempoDecorrido = setInterval(()=> {
         sec++, 1000
@@ -126,8 +126,8 @@ desligar.onclick = () => {
 
 
 //varias mensagens area
-const vmRes = document.getElementById('varias-menagens-res')//variasMsgResposta
-var vmTentativas = 0
+let vmRes = document.getElementById('varias-menagens-res')//variasMsgResposta
+let vmTentativas = 0
 
 async function getStatusSeveralMenssages() {
     vmRes.innerHTML = 'Buscando...'
@@ -140,22 +140,22 @@ async function getStatusSeveralMenssages() {
             clearInterval(interval)
         }
         try{
-            const res = await axios(url+'/hightMenssagesStatus')
+            const res = await axios(url+'/highMessagesStatus')
             if(res) clearInterval(interval)
             vmRes.innerHTML = res.data
         } catch(e) {
             vmRes = 'Erro na busca'
         }
     }, 1000)
-    
+
 }
 
 getStatusSeveralMenssages()
 
-async function toggleSeveralMenssages() {
+async function toggleSeveralMessages() {
     vmRes.innerHTML = 'Buscando'
-    const res = await axios(url + '/toggleHightMenssages')
+    const res = await axios(url + '/toggleHighMessages')
     vmRes.innerHTML = res.data
 }
 
-document.getElementById('msg-constantes').onclick = toggleSeveralMenssages
+document.getElementById('msg-constantes').onclick = toggleSeveralMessages

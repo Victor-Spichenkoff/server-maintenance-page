@@ -80,7 +80,7 @@ export const SelectApi = ({setForceUpdate, forceUpdate, startTransition}: ISelec
                 </DropdownMenuTrigger>
 
                 <DropdownMenuContent
-                    className=" bg-gray-blue w-[300px] px-4  -mr-[200px] text-gray-200 text-xl border-none border-hight-border shadow-lg"
+                    className=" bg-gray-blue w-[300px] px-4  -mr-[200px] text-gray-200 text-xl border-none border-high-border shadow-lg"
                     sideOffset={17}>
                     {elements}
                 </DropdownMenuContent>

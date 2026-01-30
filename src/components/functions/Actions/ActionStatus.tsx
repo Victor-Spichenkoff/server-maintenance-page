@@ -27,7 +27,7 @@ export const ActionStatus = ({ isLoading, showStatus, errorStatus, successStatus
 
         <div className={`flex flex-[2] justify-center items-center
                   border ml-8
-                  ${successStatus && 'border-sucess text-sucess p-2'}  
+                  ${successStatus && 'border-success text-success p-2'}  
                   ${errorStatus && 'border-error text-error p-2'}
                   rounded-md`}>
 
