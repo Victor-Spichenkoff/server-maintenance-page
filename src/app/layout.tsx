@@ -5,6 +5,8 @@ import { cn } from "@/lib/utils"
 import { NextUiProvider } from "@/providers/next-ui"
 
 import { ToastContainer } from 'react-toastify';
+import {QueryClientProvider} from "@tanstack/react-query";
+import {TanstackProvider} from "@/components/utils/TanstackProvider";
 
 const inter = Inter({ subsets: ["latin"] })
 const roboto = Roboto({ subsets: ["latin"], weight: ["400", "700", "900"] })
@@ -32,10 +34,12 @@ export default function RootLayout({
       <body className={cn(inter.className, roboto.className, poppins.className, rubik.className,
         "bg-main text-gray-200  min-h-screen mx-auto relative overflow-x-hidden" +
           " font-poppins")}>
+      <TanstackProvider>
         <NextUiProvider>
           <ToastContainer />
           {children}
         </NextUiProvider>
+      </TanstackProvider>
       </body>
     </html>
   )

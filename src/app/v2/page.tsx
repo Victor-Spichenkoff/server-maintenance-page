@@ -3,25 +3,13 @@
 import {Footer} from "@/components/template/Footer"
 import {Header} from "@/components/template/Header"
 import {SettingsArea} from "@/components/template/SettingsArea"
-import {useServers} from "@/hooks/useServerItems";
-import {ServerEntity} from "@/types/server";
-import {useQueryClient} from "@tanstack/react-query";
 
 export default function Home() {
     const useBorder = false//process.env.NODE_ENV == "development" ? "md:border border-black" : ""
 
-    const {
-        data: servers,
-        isLoading,
-        error,
-    } = useServers();
-    const queryClient = useQueryClient()
-
     return (<div className={`max-w-[416px] ${useBorder} min-h-screen mx-auto relative`}>
         <Header title="Server"/>
-        { isLoading && ("CARREGANDO") }
-        { servers && (servers[0].label) }
-        <button onClick={()=> queryClient.invalidateQueries({ queryKey: ['servers'] })}>TEstar</button>
+        <SettingsArea/>
         <Footer/>
     </div>)
 }

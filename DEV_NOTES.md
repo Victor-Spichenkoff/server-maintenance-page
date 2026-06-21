@@ -12,7 +12,82 @@
 
 
 # Todo - Front
-- Cria o HUB
-    - Adicionar o notForce=true no portfolio e static port
-- Criar um inicializador forçado do THIS
-- IMplementar a parte de testar as apis, tem no data
+- Será que funciona o last discount?
+- StartedAt? Conferir
+- Novo off (agora não é mais natural via configs)
+
+- TROCAR PARA DATE NO PRISMA
+
+## TANSTACK
+- Mutations:
+````ts
+ // hooks/useUpdateItem.ts
+
+import { useMutation, useQueryClient } from "@tanstack/react-query";
+
+async function updateItem({
+  id,
+  isActive,
+}: {
+  id: string;
+  isActive: boolean;
+}) {
+  const response = await fetch(`/api/items/${id}`, {
+    method: "PATCH",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ isActive }),
+  });
+
+  if (!response.ok) {
+    throw new Error("Erro ao atualizar");
+  }
+
+  return response.json();
+}
+
+export function useUpdateItem() {
+  const queryClient = useQueryClient();
+
+  return useMutation({
+    mutationFn: updateItem,
+
+    onSuccess: () => {
+      queryClient.invalidateQueries({
+        queryKey: ["items"],
+      });
+    },
+  });
+}
+ ````
+
+- Usar no componente
+```ts
+function ItemList() {
+  const {
+    data: items,
+    isLoading,
+    error,
+  } = useItems();
+
+  if (isLoading) {
+    return <div>Carregando...</div>;
+  }
+
+  if (error) {
+    return <div>Erro</div>;
+  }
+
+  return (
+    <ul>
+      {items.map(item => (
+        <li key={item.id}>
+          {item.name}
+        </li>
+      ))}
+    </ul>
+  );
+}
+
+```
