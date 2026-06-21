@@ -64,6 +64,16 @@ export function useUpdateItem() {
 
 - Usar no componente
 ```ts
+
+const {
+    data: servers,
+    isLoading,
+    error,
+} = useServers();
+const queryClient = useQueryClient()
+
+    <button onClick={()=> queryClient.invalidateQueries({ queryKey: ['servers'] })}>TEstar</button>
+
 function ItemList() {
   const {
     data: items,

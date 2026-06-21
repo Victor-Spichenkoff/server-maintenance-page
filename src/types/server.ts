@@ -6,5 +6,6 @@ export type ServerEntity = {
     isActive?: boolean
     LastCalled?: Date
     LastCalledSuccessfully?: Date
-    callOnAll: boolean
+    isMain: boolean
+    isShowOnQuickActions: boolean
 }

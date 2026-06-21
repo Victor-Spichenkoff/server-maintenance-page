@@ -1,8 +1,9 @@
-import { useQuery } from "@tanstack/react-query";
 import {ServerEntity} from "@/types/server";
 import {baseUrl} from "@/global";
+import {useQuery} from "@tanstack/react-query";
 
-async function getServerStatus(): Promise<ServerEntity[]> {
+//TODO: Configurar para usar esse também
+async function getApiConfigItem(){
     const response = await fetch(baseUrl + "/v2/status");
 
     if (!response.ok) {
@@ -22,7 +23,7 @@ export function useServers() {
     })()
 
     return useQuery<ServerEntity[]>({
-        queryKey: ["servers"],
+        queryKey: ["api_config"],
         queryFn: getServerStatus,
         initialData,
     });

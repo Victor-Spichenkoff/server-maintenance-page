@@ -28,6 +28,9 @@ export const Footer = () => (
         <Link href="/v1" className="hover:text-green-500 transition-colors">
           V1
         </Link>
+        <Link href="/v2" className="hover:text-green-500 transition-colors">
+          V2
+        </Link>
       </div>
       <p className="mt-4">&copy; Victor Spichenkoff 2024</p>
     </div>
