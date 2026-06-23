@@ -1,5 +1,5 @@
 import {useServers} from "@/hooks/useServerItems";
-import {ServerEntity} from "@/types/server";
+import {ServerEntity} from "@/types/responses/server";
 import {ServersActiveStatus, ServersUtils} from "@/utils/serversUtils";
 
 export const StatusV3 = () => {

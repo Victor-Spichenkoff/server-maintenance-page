@@ -12,6 +12,8 @@
 
 
 # Todo - Front
+- Ao setar para THIS OFF = desligar também todos os IsActive
+
 - Será que funciona o last discount?
 - StartedAt? Conferir
 - Novo off (agora não é mais natural via configs)

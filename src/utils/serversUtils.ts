@@ -1,4 +1,4 @@
-import {ServerEntity} from "@/types/server";
+import {ServerEntity} from "@/types/responses/server";
 
 export const isAllMarkedAsCallOnAllActive = (servers: ServerEntity[]) => {
     const markedAsCallOnAll = servers.filter(x => x.isMain)

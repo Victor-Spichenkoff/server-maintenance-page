@@ -1,30 +1,29 @@
-import {ServerEntity} from "@/types/server";
+import {ServerEntity} from "@/types/responses/server";
 import {baseUrl} from "@/global";
 import {useQuery} from "@tanstack/react-query";
 
 //TODO: Configurar para usar esse também
 async function getApiConfigItem(){
-    const response = await fetch(baseUrl + "/v2/status");
+    const response = await fetch(`${baseUrl}/apiStatus`);
 
     if (!response.ok) {
-        throw new Error("Erro ao buscar servers");
+        throw new Error("Erro ao buscar config da API");
     }
 
     const data = await response.json()
+    console.log(data)
 
-    localStorage.setItem("servers", JSON.stringify(data))
+    localStorage.setItem("api_config", JSON.stringify(data))
 
+    console.log("DAta:" + data)
     return data
 }
-export function useServers() {
-    const initialData = (() => {
-        const cached = localStorage.getItem("servers")
-        return cached ? JSON.parse(cached) : undefined
-    })()
+export function useApiConfig() {
+    const initialData = false
 
-    return useQuery<ServerEntity[]>({
+    return useQuery<boolean>({
         queryKey: ["api_config"],
-        queryFn: getServerStatus,
+        queryFn: getApiConfigItem,
         initialData,
     });
 }

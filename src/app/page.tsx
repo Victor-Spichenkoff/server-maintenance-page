@@ -4,7 +4,7 @@ import {Footer} from "@/components/template/Footer"
 import {Header} from "@/components/template/Header"
 import {SettingsArea} from "@/components/template/SettingsArea"
 import {useServers} from "@/hooks/useServerItems";
-import {ServerEntity} from "@/types/server";
+import {ServerEntity} from "@/types/responses/server";
 import {useQueryClient} from "@tanstack/react-query";
 import {TimeMonitoringArea} from "@/components/template/TimeMonitoringArea";
 import {SelectServersArea} from "@/components/v3/toggleArea/SelectServersArea";

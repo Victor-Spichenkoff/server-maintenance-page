@@ -7,8 +7,9 @@ import {useQueryClient} from "@tanstack/react-query";
 import {useServers} from "@/hooks/useServerItems";
 import {useToast} from "@/hooks/use-toast";
 import {ShowMessage} from "@/components/utils/ShowMessage";
-import {ServerEntity} from "@/types/server";
+import {ServerEntity} from "@/types/responses/server";
 import {isAllMarkedAsCallOnAllActive, ServersUtils} from "@/utils/serversUtils";
+import {Loading} from "@/components/utils/Loading";
 
 export const ToggleApisV3 = () => {
     const {
@@ -36,6 +37,7 @@ export const ToggleApisV3 = () => {
         try {
             await axios(`${baseUrlV2}/toggle/${id}`)
             await queryClient.invalidateQueries({ queryKey: ['servers'] })
+            await queryClient.invalidateQueries({ queryKey: ['api_config'] })
         } catch {
             ShowMessage("Can't change status", 'error', toast)
         }
@@ -70,6 +72,7 @@ export const ToggleApisV3 = () => {
         try {
             await axios(`${baseUrlV2}/toggle/all`)
             await queryClient.invalidateQueries({ queryKey: ['servers'] })
+            await queryClient.invalidateQueries({ queryKey: ['api_config'] })
         } catch {
             ShowMessage("Can't change to \"ALL\"", 'error', toast)
         }
@@ -79,6 +82,7 @@ export const ToggleApisV3 = () => {
         try {
             await axios(`${baseUrlV2}/set/off`)
             await queryClient.invalidateQueries({ queryKey: ['servers'] })
+            await queryClient.invalidateQueries({ queryKey: ['api_config'] })
         } catch {
             ShowMessage("Can't set all to \"OFF\"", 'error', toast)
         }
@@ -112,6 +116,7 @@ export const ToggleApisV3 = () => {
 
     return (
         <div className="relative">
+            <Loading isLoading={isLoading} />
             <DropdownMenu modal={false}>
                 <DropdownMenuTrigger asChild>
                     <div>

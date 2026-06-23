@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import {ServerEntity} from "@/types/server";
+import {ServerEntity} from "@/types/responses/server";
 import {baseUrl} from "@/global";
 
 async function getServerStatus(): Promise<ServerEntity[]> {
