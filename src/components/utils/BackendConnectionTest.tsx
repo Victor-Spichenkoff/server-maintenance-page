@@ -15,11 +15,10 @@ let attempts = 0
 * */
 export const BackendConnectionTest = () => {
     const [errorToastId, setErrorToastId] = useState<string | number | null>(null)
-    console.log("kjbae")
 
     const handleCancel = () => {
         toast.dismiss(errorToastId ?? 1)
-        toast.warning("Cancelled")
+        toast.warning("Canceled")
     }
     const actionArea = (
         <div className={"flex gap-x-2 min-w-fit"}>

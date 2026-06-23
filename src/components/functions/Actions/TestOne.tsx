@@ -141,7 +141,7 @@ export const TestOne = ({ isAllEndpoints }: ITestOne) => {
       setSuccessStatus("")
       setCallingId(-1)
 
-      setTimeout(() => setErrorStatus(`CANCELLED`), 20)
+      setTimeout(() => setErrorStatus(`CANCELED`), 20)
    }
 
 

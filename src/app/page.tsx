@@ -14,7 +14,12 @@ export default function Home() {
 
         <SelectServersArea />
         {/*Quick actions*/}
-        <QuickActionV3 />
+        <div className="mt-12 w-full">
+            <h2 className="text-2xl text-center">Actions</h2>
+            <div className="w-full flex mt-5">
+                <QuickActionV3 />
+            </div>
+        </div>
         <TimeMonitoringArea />
 
         <Footer/>

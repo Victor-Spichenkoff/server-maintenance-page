@@ -68,7 +68,7 @@ export const ForceAll = ({ setSuccessStatus, setErrorStatus, setShowStatus, star
 
         clearTimeout(currentTimeout)
 
-        setErrorStatus(`CANCELLED`)
+        setErrorStatus(`CANCELED`)
     }
 
     return (

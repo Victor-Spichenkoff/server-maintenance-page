@@ -1,16 +1,14 @@
 import {useServers} from "@/hooks/useServerItems";
 import {ServerEntity} from "@/types/responses/server";
 import {useState, useTransition} from "react";
-import {IAllApis} from "@/types/allApis";
 import axios from "axios";
-import {baseUrl, baseUrlV2} from "@/global";
-import {selectablePoints} from "@/data/selectablePoints";
+import {baseUrlV2} from "@/global";
 import {ActionButton} from "@/components/template/ActionButton";
-import {allApis} from "@/data/AllApis";
 import {ToggleItem} from "@/components/utils/ToggleItem";
 import {ActionStatus} from "@/components/functions/Actions/ActionStatus";
 import {TestExtraActions} from "@/components/functions/Actions/TestExtraActions";
 import axiosExternalCall from "@/lib/externalCallAxios";
+import {useQueryClient} from "@tanstack/react-query";
 
 interface ITestOneV3 {
     isAllApi?: boolean
@@ -18,11 +16,11 @@ interface ITestOneV3 {
 
 let currentTimeout: any
 
-export const TestOneV3 = ({ isAllApi }: ITestOneV3) => {
+export const TestOneV3 = ({isAllApi}: ITestOneV3) => {
     let {
-        data: servers,
-        error,
+        data: servers
     } = useServers();
+    const queryClient = useQueryClient()
 
     const [force, setForce] = useState(false)
     const [successStatus, setSuccessStatus] = useState("")
@@ -40,13 +38,14 @@ export const TestOneV3 = ({ isAllApi }: ITestOneV3) => {
 
         startTransition(async () => {
             try {
-                    const res = await axiosExternalCall(fullUrl, {
-                        signal: controller.signal,
-                        timeout: 10_000
-                    })
+                await axiosExternalCall(fullUrl, {
+                    signal: controller.signal,
+                    timeout: 10_000
+                })
 
-                    setSuccessStatus("Woking \n" + servers.filter((x: any) => x.id == id)[0].shortLabel)
-                    await axios(`${baseUrlV2}/success-called/${id}`)
+                setSuccessStatus("Woking \n" + servers.filter((x: any) => x.id == id)[0].shortLabel)
+                await axios(`${baseUrlV2}/success-called/${id}`)
+                await queryClient.invalidateQueries({queryKey: ['servers']})
             } catch (e: any) {
                 if (callingId >= 0)
                     setErrorStatus("Doesn't work")
@@ -61,7 +60,7 @@ export const TestOneV3 = ({ isAllApi }: ITestOneV3) => {
     }
 
     //Usado quando force=true
-    const recursiveRequest = async (times: number, id: number, allApiItem?: IAllApis) => {
+    const recursiveRequest = async (times: number, id: number, fullUrl: string) => {
         const controller = new AbortController()
         setAbortController(controller)
 
@@ -72,23 +71,14 @@ export const TestOneV3 = ({ isAllApi }: ITestOneV3) => {
                 return setErrorStatus("Limit of attempts reached! (10)")
 
             try {
-                if (isAllApi && allApiItem) {
-                    const res = await axiosExternalCall(allApiItem?.url, {
-                        timeout: 8_000,
-                        signal: controller.signal
-                    })
+                await axiosExternalCall(fullUrl, {
+                    timeout: 8_000,
+                    signal: controller.signal
+                })
 
-                    setSuccessStatus("Working: " + allApiItem.label)
-                } else {
-                    const res = await axios(`${baseUrl}/test/one/${id}`, {
-                        timeout: 8_000,
-                        signal: controller.signal
-                    })
-
-                    setSuccessStatus(`Ligado\n` + res.data)
-
-                }
-
+                setSuccessStatus("Working: " + servers.filter((x: ServerEntity) => x.id == id)[0].shortLabel)
+                await axios(`${baseUrlV2}/success-called/${id}`)
+                await queryClient.invalidateQueries({queryKey: ['servers']})
                 setCallingId(-1)
                 return
             } catch (e: any) {
@@ -101,11 +91,11 @@ export const TestOneV3 = ({ isAllApi }: ITestOneV3) => {
                         wait 8 seconds...
                         `)
                 else
-                    setErrorStatus("Erro no request!")
+                    setErrorStatus(`Request Error! \n${times}/10 attempts\n Wait 10 seconds...`)
             }
 
 
-            currentTimeout = setTimeout(() => recursiveRequest(times, id, allApiItem), 10_000)
+            currentTimeout = setTimeout(() => recursiveRequest(times, id, fullUrl), 10_000)
         })
     }
 
@@ -121,12 +111,12 @@ export const TestOneV3 = ({ isAllApi }: ITestOneV3) => {
 
 
     //com FORCE
-    const handleForceStartOne = (id: number, allApiItem?: IAllApis) => {
+    const handleForceStartOne = (id: number, fullUrl: string) => {
         setShowStatus(true)
         setCallingId(id)
         setErrorStatus("")
         setSuccessStatus("")
-        recursiveRequest(0, id, allApiItem)
+        recursiveRequest(0, id, fullUrl)
     }
 
 
@@ -137,33 +127,41 @@ export const TestOneV3 = ({ isAllApi }: ITestOneV3) => {
         setSuccessStatus("")
         setCallingId(-1)
 
-        setTimeout(() => setErrorStatus(`CANCELLED`), 20)
+        setTimeout(() => setErrorStatus(`CANCELED`), 20)
     }
 
 
     //definição dos botões de ação
     let allButtons
-    if(!isAllApi)// faz filtragem
-        servers = servers?.filter((x:any) => x.isShowOnQuickActions)
+    if (!isAllApi)// faz filtragem
+        servers = servers?.filter((x: any) => x.isShowOnQuickActions)
 
-        allButtons = servers.map((server: ServerEntity) => {
-                       return (
-                <ActionButton
-                    label={callingId == server.id ? "Cancel" : server.shortLabel}
-                    className={callingId == server.id ? "bg-error hover:bg-[#8d0b0b]" : ""}
-                    onClick={() => {
-                        if (callingId == server.id)
-                            return handleCancel()
+    allButtons = servers.map((server: ServerEntity) => {
+        //
+        const lastCalled = server.LastCalledSuccessfully;
+        const FIFTEEN_MINUTES = 15 * 60 * 1000; // ms
+        let isWithin15Minutes = false
+        if (lastCalled)
+            isWithin15Minutes = Date.now() - (new Date(lastCalled)).getTime() <= FIFTEEN_MINUTES;
 
-                        if (force)
-                            handleForceStartOne(Number(server.id))
-                        else
-                            handleTestOneClick(Number(server.id), server.fullUrl)
-                    }}
-                    key={server.id}
-                />
-            )
-        })
+
+        return (
+            <ActionButton
+                label={callingId == server.id ? "Cancel" : server.shortLabel}
+                className={`${isWithin15Minutes ? "bg-green-500/90 hover:bg-green-500" : "bg-transparent border-2 border-highlight"}  ${callingId == server.id ? "bg-error hover:bg-[#8d0b0b]" : ""}`}
+                onClick={() => {
+                    if (callingId == server.id)
+                        return handleCancel()
+
+                    if (force)
+                        handleForceStartOne(Number(server.id), server.fullUrl)
+                    else
+                        handleTestOneClick(Number(server.id), server.fullUrl)
+                }}
+                key={server.id}
+            />
+        )
+    })
 
     const handleForceChange = () => setForce(!force)
 
@@ -184,8 +182,18 @@ export const TestOneV3 = ({ isAllApi }: ITestOneV3) => {
                 isLoading={isLoading}
                 showStatus={showStatus}
             />
-
         </div>
+
+        {!isAllApi && (
+        <div>
+            <TestExtraActions
+                setErrorStatus={setErrorStatus}
+                setShowStatus={setShowStatus}
+                startTransition={startTransition}
+                setSuccessStatus={setSuccessStatus}
+            />
+        </div>
+        )}
 
     </>)
 }
