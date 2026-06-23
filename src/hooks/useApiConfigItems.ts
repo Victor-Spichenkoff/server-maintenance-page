@@ -1,8 +1,6 @@
-import {ServerEntity} from "@/types/responses/server";
 import {baseUrl} from "@/global";
 import {useQuery} from "@tanstack/react-query";
 
-//TODO: Configurar para usar esse também
 async function getApiConfigItem(){
     const response = await fetch(`${baseUrl}/apiStatus`);
 
@@ -11,19 +9,17 @@ async function getApiConfigItem(){
     }
 
     const data = await response.json()
-    console.log(data)
 
     localStorage.setItem("api_config", JSON.stringify(data))
 
-    console.log("DAta:" + data)
     return data
 }
 export function useApiConfig() {
-    const initialData = false
+    const placeholderData = false
 
     return useQuery<boolean>({
         queryKey: ["api_config"],
         queryFn: getApiConfigItem,
-        initialData,
+        placeholderData,
     });
 }

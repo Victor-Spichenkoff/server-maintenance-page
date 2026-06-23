@@ -16,14 +16,27 @@ async function getServerStatus(): Promise<ServerEntity[]> {
     return data
 }
 export function useServers() {
-    const initialData = (() => {
+    const placeholderData = (() => {
         const cached = localStorage.getItem("servers")
-        return cached ? JSON.parse(cached) : undefined
+        // ATENÇÃO: Sempre vem como desativado
+        return cached ? mapToOfflineServers(JSON.parse(cached)) : undefined
     })()
 
     return useQuery<ServerEntity[]>({
         queryKey: ["servers"],
         queryFn: getServerStatus,
-        initialData,
+        placeholderData,
     });
+}
+
+
+const mapToOfflineServers = (servers: ServerEntity[]) => {
+    return servers.map(x => {
+        x.isActive = false
+        x.shortLabel += "(off)"
+        x.LastCalled = null
+        x.LastCalledSuccessfully = null
+
+        return x
+    })
 }

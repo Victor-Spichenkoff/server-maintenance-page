@@ -4,8 +4,8 @@ export type ServerEntity = {
     shortLabel: string
     fullUrl: string
     isActive?: boolean
-    LastCalled?: Date
-    LastCalledSuccessfully?: Date
+    LastCalled?: Date | null
+    LastCalledSuccessfully?: Date | null
     isMain: boolean
     isShowOnQuickActions: boolean
 }

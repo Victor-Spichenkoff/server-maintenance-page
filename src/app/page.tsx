@@ -2,14 +2,9 @@
 
 import {Footer} from "@/components/template/Footer"
 import {Header} from "@/components/template/Header"
-import {SettingsArea} from "@/components/template/SettingsArea"
-import {useServers} from "@/hooks/useServerItems";
-import {ServerEntity} from "@/types/responses/server";
-import {useQueryClient} from "@tanstack/react-query";
 import {TimeMonitoringArea} from "@/components/template/TimeMonitoringArea";
 import {SelectServersArea} from "@/components/v3/toggleArea/SelectServersArea";
-import {QuickSettings} from "@/components/functions/Actions/QuickSettings";
-import {TestOneV3} from "@/components/v3/TestOne.v3";
+import {QuickActionV3} from "@/components/v3/Actions/QuickActions.v3";
 
 export default function Home() {
     const useBorder = false//process.env.NODE_ENV == "development" ? "md:border border-black" : ""
@@ -19,7 +14,7 @@ export default function Home() {
 
         <SelectServersArea />
         {/*Quick actions*/}
-        <TestOneV3 />
+        <QuickActionV3 />
         <TimeMonitoringArea />
 
         <Footer/>

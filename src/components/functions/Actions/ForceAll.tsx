@@ -45,7 +45,7 @@ export const ForceAll = ({ setSuccessStatus, setErrorStatus, setShowStatus, star
                 `)
             } catch (e: any) {
                 if (e.code === 'ECONNABORTED')
-                    setErrorStatus("Demorou Muito")
+                    setErrorStatus("Take too long!")
                 else
                     setErrorStatus("Erro no request!")
             }

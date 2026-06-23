@@ -5,6 +5,7 @@ import { HubItem } from "@/components/hub/HubItem"
 import { ActionButton } from "@/components/template/ActionButton"
 import { Footer } from "@/components/template/Footer"
 import Link from "next/link"
+import {TestOneV3} from "@/components/v3/Actions/TestOne.v3";
 
 const Hub = () => {
   return (
@@ -90,8 +91,7 @@ const Hub = () => {
 
 
       <div className="px-8 w-full mt-9">
-        <TestOne isAllEndpoints />
-
+        <TestOneV3 isAllApi />
       </div>
 
 
