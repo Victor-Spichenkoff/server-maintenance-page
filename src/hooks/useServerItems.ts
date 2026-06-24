@@ -1,4 +1,4 @@
-import { useQuery } from "@tanstack/react-query";
+import {useQuery} from "@tanstack/react-query";
 import {ServerEntity} from "@/types/responses/server";
 import {baseUrl} from "@/global";
 
@@ -11,12 +11,17 @@ async function getServerStatus(): Promise<ServerEntity[]> {
 
     const data = await response.json()
 
-    localStorage.setItem("servers", JSON.stringify(data))
+    if (typeof window !== "undefined")
+        localStorage.setItem("servers", JSON.stringify(data))
 
     return data
 }
+
 export function useServers() {
     const placeholderData = (() => {
+        if (typeof window === "undefined")
+            return undefined
+
         const cached = localStorage.getItem("servers")
         // ATENÇÃO: Sempre vem como desativado
         return cached ? mapToOfflineServers(JSON.parse(cached)) : undefined

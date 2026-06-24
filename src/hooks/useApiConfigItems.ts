@@ -10,8 +10,6 @@ async function getApiConfigItem(){
 
     const data = await response.json()
 
-    localStorage.setItem("api_config", JSON.stringify(data))
-
     return data
 }
 export function useApiConfig() {
