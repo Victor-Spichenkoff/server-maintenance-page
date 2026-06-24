@@ -65,6 +65,8 @@ export const QuickActionV3 = () => {
     }
 
     const allOnce = async () => {
+        if(!servers)
+            return
         resetValues()
         setShowStatus(true)
         const controller = new AbortController()

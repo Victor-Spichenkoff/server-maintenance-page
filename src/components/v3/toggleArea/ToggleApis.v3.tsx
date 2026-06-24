@@ -20,7 +20,7 @@ export const ToggleApisV3 = () => {
     const { toast } = useToast()
 
     console.log("isLoagind" + isLoading)
-    if(servers.length === 0)
+    if(!servers || servers.length === 0)
         return null
 
 
@@ -68,13 +68,13 @@ export const ToggleApisV3 = () => {
         <ToggleItem
             key={"all"}
             label={"Main API's"}
-            isChecked={(ServersUtils.isAllMainActiveActive(servers))}
+            isChecked={(ServersUtils.isAllMainActiveActive(servers ?? []))}
             onCheckChange={toggleMarkedAsMain}
         />
         <ToggleItem
             key={"off"}
             label={"OFF"}
-            isChecked={(ServersUtils.isAllOff(servers))}
+            isChecked={(ServersUtils.isAllOff(servers ?? []))}
             onCheckChange={allOff}
         />
         </>)

@@ -19,7 +19,9 @@ export class ServersUtils {
         return servers.filter(x => x.isActive).length == 0
     }
 
-    public static mapToActiveStatus(servers: ServerEntity[]) {
+    public static mapToActiveStatus(servers?: ServerEntity[]) {
+        if(!servers) return { type: ServersActiveStatus.error, label: "ERROR" }
+
         const actives = servers.filter(x => x.isActive)
         const markedAsMain = servers.filter(x => x.isMain)
         const activeCount = actives.length

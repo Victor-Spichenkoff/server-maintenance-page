@@ -43,7 +43,7 @@ export const TestOneV3 = ({isAllApi}: ITestOneV3) => {
                     timeout: 10_000
                 })
 
-                setSuccessStatus("Woking \n" + servers.filter((x: any) => x.id == id)[0].shortLabel)
+                setSuccessStatus("Woking \n" + servers?.filter((x: any) => x.id == id)[0].shortLabel)
                 await axios(`${baseUrlV2}/success-called/${id}`)
                 await queryClient.invalidateQueries({queryKey: ['servers']})
             } catch (e: any) {
@@ -76,7 +76,7 @@ export const TestOneV3 = ({isAllApi}: ITestOneV3) => {
                     signal: controller.signal
                 })
 
-                setSuccessStatus("Working: " + servers.filter((x: ServerEntity) => x.id == id)[0].shortLabel)
+                setSuccessStatus("Working: " + servers?.filter((x: ServerEntity) => x.id == id)[0].shortLabel)
                 await axios(`${baseUrlV2}/success-called/${id}`)
                 await queryClient.invalidateQueries({queryKey: ['servers']})
                 setCallingId(-1)
@@ -136,7 +136,7 @@ export const TestOneV3 = ({isAllApi}: ITestOneV3) => {
     if (!isAllApi)// faz filtragem
         servers = servers?.filter((x: any) => x.isShowOnQuickActions)
 
-    allButtons = servers.map((server: ServerEntity) => {
+    allButtons = servers?.map((server: ServerEntity) => {
         //
         const lastCalled = server.LastCalledSuccessfully;
         const FIFTEEN_MINUTES = 15 * 60 * 1000; // ms

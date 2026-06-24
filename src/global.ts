@@ -7,4 +7,4 @@ export const baseUrlV2 = process.env.NODE_ENV == "development" ? "http://localho
 export const maxAvaliableHoursUsage = 750
 
 
-export const notReq = true
+export const notReq = process.env.NODE_ENV == "development" && false// proteção, só permite em dev
