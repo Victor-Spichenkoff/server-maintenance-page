@@ -38,7 +38,7 @@ export class ServersUtils {
             label = "ALL main"
             typeResult = ServersActiveStatus.allMarkedAsCallOnActive
         } else if (activeCount > markedAsMainCount && activeAndMarkedAsMainCount == markedAsMainCount) {
-            label = `ALL & other ${activeCount - markedAsMainCount}`
+            label = `ALL main & other ${activeCount - markedAsMainCount}`
             typeResult = ServersActiveStatus.moreThanAllMarkedAsCallOn
         } else {
             label = `${actives[0].shortLabel} & other ${activeCount - 1}`

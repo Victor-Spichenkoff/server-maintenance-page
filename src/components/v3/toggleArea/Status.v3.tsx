@@ -14,7 +14,7 @@ export const StatusV3 = () => {
     return (
         <div
             className={` text-slate-100 border border-gold min-w-[280px] text-center px-4 py-2 rounded-xl text-2xl
-                ${type == ServersActiveStatus.allOff && "bg-gold text-gray-900"}
+                ${type != ServersActiveStatus.allOff && "bg-gold text-gray-900"}
             ${error && 'border-error bg-transparent text-error'}
         `}>
             {!isLoading && label}
