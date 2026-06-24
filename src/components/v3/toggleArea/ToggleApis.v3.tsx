@@ -8,20 +8,17 @@ import {useServers} from "@/hooks/useServerItems";
 import {useToast} from "@/hooks/use-toast";
 import {ShowMessage} from "@/components/utils/ShowMessage";
 import {ServerEntity} from "@/types/responses/server";
-import {isAllMarkedAsCallOnAllActive, ServersUtils} from "@/utils/serversUtils";
+import {ServersUtils} from "@/utils/serversUtils";
 import {Loading} from "@/components/utils/Loading";
 
 export const ToggleApisV3 = () => {
     const {
-        data: servers,
+        data: servers=[],
         isLoading,
     } = useServers()
     const queryClient = useQueryClient()
     const { toast } = useToast()
 
-    console.log("isLoagind" + isLoading)
-    if(!servers || servers.length === 0)
-        return null
 
 
     const changeCurrentOn = async (id: string | number) => {

@@ -17,13 +17,6 @@ export const SelectServersArea = () => {
             <div className={"flex justify-between my-5"}>
                 <ToggleApisV3/>
                 <ToggleThisV3/>
-
-                {/*<ToggleItem*/}
-                {/*    isChecked={isApiOn}*/}
-                {/*    onCheckChange={handleApiStateChange}*/}
-                {/*    label="Keep API ON"*/}
-                {/*    setForceUpdate={setForceUpdate}*/}
-                {/*/>*/}
             </div>
 
         </div>

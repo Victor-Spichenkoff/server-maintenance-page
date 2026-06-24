@@ -7,13 +7,13 @@ import {SelectServersArea} from "@/components/v3/toggleArea/SelectServersArea";
 import {QuickActionV3} from "@/components/v3/Actions/QuickActions.v3";
 
 export default function Home() {
-    const useBorder = false//process.env.NODE_ENV == "development" ? "md:border border-black" : ""
+    const useBorder = true//process.env.NODE_ENV == "development" ? "md:border border-black" : ""
 
     return (<div className={`max-w-[416px] ${useBorder} min-h-screen mx-auto relative`}>
         <Header title="Server"/>
 
+        <div className={"p-8"}>
         <SelectServersArea />
-        {/*Quick actions*/}
         <div className="mt-12 w-full">
             <h2 className="text-2xl text-center">Actions</h2>
             <div className="w-full flex mt-5">
@@ -21,6 +21,8 @@ export default function Home() {
             </div>
         </div>
         <TimeMonitoringArea />
+
+        </div>
 
         <Footer/>
     </div>)

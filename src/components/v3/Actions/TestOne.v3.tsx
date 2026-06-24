@@ -148,7 +148,7 @@ export const TestOneV3 = ({isAllApi}: ITestOneV3) => {
         return (
             <ActionButton
                 label={callingId == server.id ? "Cancel" : server.shortLabel}
-                className={`${isWithin15Minutes ? "bg-green-500/90 hover:bg-green-500" : "bg-transparent border-2 border-highlight"}  ${callingId == server.id ? "bg-error hover:bg-[#8d0b0b]" : ""}`}
+                className={`${isWithin15Minutes ? "bg-green-500/90 hover:bg-green-500" : "bg-transparent border-2 border-highlight"}  ${callingId == server.id ? "bg-error border-[#8d0b0b] hover:bg-[#8d0b0b]" : ""}`}
                 onClick={() => {
                     if (callingId == server.id)
                         return handleCancel()
